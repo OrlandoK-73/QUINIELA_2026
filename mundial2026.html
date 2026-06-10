@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predicciones Mundial 2026 · Análisis Matemático</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Paleta oficial Mundial 2026 (tres anfitriones) */
+    --green:#3CAC3B;   /* MEX */
+    --blue:#2A398D;    /* USA */
+    --red:#E61D25;     /* CAN */
+    --gray:#D1D4D1;    /* gris claro */
+    --slate:#474A4A;   /* gris oscuro base */
+
+    --ink:#2c2f2f;          /* fondo principal (derivado del slate) */
+    --ink2:#373a3a;
+    --panel:#3f4242;
+    --line:#565a59;
+    --white:#f3f5f3;
+    --muted:#aeb3b0;
+    --mute2:#7f8482;
+    --green-lt:#5ec85c;
+    --blue-lt:#4a5bc4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);color:var(--white);
+    font-family:'Archivo',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* barra tricolor anfitriona */
+  .tricolor{height:6px;display:flex}
+  .tricolor i{flex:1}
+  .tricolor .g{background:var(--green)}
+  .tricolor .b{background:var(--blue)}
+  .tricolor .r{background:var(--red)}
+
+  /* ---------- HERO ---------- */
+  header{
+    position:relative;padding:58px 0 42px;border-bottom:1px solid var(--line);overflow:hidden;
+    background:
+      radial-gradient(115% 80% at 88% -15%, rgba(60,172,59,.20), transparent 50%),
+      radial-gradient(90% 70% at 10% 120%, rgba(42,57,141,.28), transparent 55%),
+      var(--ink);
+  }
+  .badge26{
+    position:absolute;right:-26px;top:34px;width:220px;height:220px;opacity:.8;
+    display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);gap:5px;
+  }
+  .badge26 i{border:1px solid rgba(255,255,255,.14)}
+  .badge26 i.g{background:rgba(60,172,59,.55);border:none}
+  .badge26 i.b{background:rgba(42,57,141,.65);border:none}
+  .badge26 i.r{background:rgba(230,29,37,.55);border:none}
+  .badge26 i.rd{background:rgba(230,29,37,.55);border-radius:0 100% 0 0;border:none}
+
+  .eyebrow{font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--green-lt);margin-bottom:20px;display:flex;gap:14px;align-items:center;position:relative;z-index:2}
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--line);max-width:170px}
+  h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(2.8rem,9vw,6rem);line-height:.86;letter-spacing:.005em;text-transform:uppercase;margin-bottom:22px;position:relative;z-index:2}
+  h1 .grn{color:var(--green)}
+  h1 .out{color:transparent;-webkit-text-stroke:1.5px var(--white)}
+  .slogan{font-family:'Anton',sans-serif;font-size:.9rem;letter-spacing:.5em;text-transform:uppercase;margin-bottom:18px;position:relative;z-index:2}
+  .slogan b:nth-child(1){color:var(--green)} .slogan b:nth-child(2){color:var(--white)} .slogan b:nth-child(3){color:var(--red)}
+  .lede{max-width:560px;color:#dadcd9;font-size:1.06rem;position:relative;z-index:2}
+  .lede b{color:var(--white);font-weight:600}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;font-family:'Spline Sans Mono',monospace;font-size:.74rem;position:relative;z-index:2}
+  .chip{border:1px solid var(--line);padding:7px 13px;border-radius:2px;color:var(--muted);letter-spacing:.04em}
+  .chip b{color:var(--green-lt);font-weight:600}
+
+  /* ---------- METODOLOGÍA ---------- */
+  .method{padding:48px 0;border-bottom:1px solid var(--line)}
+  .sec-label{font-family:'Spline Sans Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+  .sec-label span{color:var(--green)}
+  .formula{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--green);padding:20px 22px;border-radius:3px;margin:22px 0;font-family:'Spline Sans Mono',monospace;font-size:.86rem;color:#dcdedb;overflow-x:auto}
+  .formula .k{color:var(--green-lt)} .formula .g{color:var(--green)} .formula .c{color:var(--mute2)}
+  .inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:8px}
+  .inp{border:1px solid var(--line);padding:16px 17px;border-radius:3px;background:var(--panel);position:relative;overflow:hidden}
+  .inp .bar{position:absolute;top:0;left:0;width:3px;height:100%}
+  .inp:nth-child(1) .bar{background:var(--green)} .inp:nth-child(2) .bar{background:var(--blue)} .inp:nth-child(3) .bar{background:var(--red)} .inp:nth-child(4) .bar{background:var(--gray)}
+  .inp .n{font-family:'Spline Sans Mono',monospace;color:var(--muted);font-size:.78rem;letter-spacing:.15em}
+  .inp h4{font-size:1rem;margin:8px 0 6px}
+  .inp p{font-size:.86rem;color:var(--muted)}
+  .sources{margin-top:24px;font-size:.82rem;color:var(--muted)}
+  .sources a{color:var(--green-lt);text-decoration:none;border-bottom:1px solid var(--line)}
+  .sources a:hover{color:var(--white)}
+
+  /* ---------- MATCHES ---------- */
+  .matches{padding:48px 0}
+  .match{border:1px solid var(--line);border-radius:4px;background:var(--panel);margin-bottom:18px;overflow:hidden;transition:border-color .25s, transform .25s}
+  .match:hover{border-color:var(--green);transform:translateY(-2px)}
+  .m-top{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid var(--line);font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--muted);letter-spacing:.05em;flex-wrap:wrap;gap:8px;background:var(--ink2)}
+  .m-no{color:var(--green-lt);font-weight:600}
+  .m-grp{border:1px solid var(--line);padding:3px 8px;border-radius:2px;color:var(--white)}
+  .m-body{padding:22px 20px}
+  .teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin-bottom:20px}
+  .team{display:flex;flex-direction:column}
+  .team.right{text-align:right}
+  .team .name{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(1.2rem,3.6vw,1.8rem);line-height:.95;text-transform:uppercase;letter-spacing:.01em}
+  .team .fifa{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:7px}
+  .host-tag{display:inline-block;font-family:'Spline Sans Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:#fff;background:var(--blue);padding:2px 7px;border-radius:2px;margin-top:7px;width:fit-content;font-weight:600}
+  .team.right .host-tag{align-self:flex-end}
+  .score{font-family:'Anton',sans-serif;font-size:clamp(2rem,6vw,3rem);background:var(--ink);border:1px solid var(--line);border-radius:4px;padding:6px 18px;letter-spacing:.04em;white-space:nowrap}
+  .score .s{color:var(--green-lt)}
+  .score em{font-style:normal;color:var(--mute2);font-size:.5em;vertical-align:middle;padding:0 3px}
+
+  .pbar{display:flex;height:30px;border-radius:3px;overflow:hidden;border:1px solid var(--line);margin-bottom:7px}
+  .pbar > div{display:flex;align-items:center;justify-content:center;font-family:'Spline Sans Mono',monospace;font-size:.74rem;font-weight:600;min-width:0;transition:flex .4s}
+  .pbar .pa{background:var(--green);color:#fff}
+  .pbar .pe{background:var(--gray);color:var(--slate)}
+  .pbar .pb{background:var(--blue);color:#fff}
+  .pleg{display:flex;justify-content:space-between;font-family:'Spline Sans Mono',monospace;font-size:.66rem;color:var(--muted);letter-spacing:.04em}
+  .pleg .da{color:var(--green-lt)} .pleg .db{color:var(--blue-lt)}
+  .xg{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--muted);margin:16px 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .xg b{color:var(--green-lt)}
+  .note{font-size:.92rem;color:#d2d4d1;border-top:1px dashed var(--line);padding-top:14px}
+  .note .why{display:block;font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-lt);margin-bottom:6px}
+
+  /* ---------- VERDICT ---------- */
+  .verdict{padding:44px 0 70px;border-top:1px solid var(--line)}
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:22px}
+  .vc{border:1px solid var(--line);background:var(--panel);padding:18px;border-radius:3px;position:relative;overflow:hidden}
+  .vc .top{position:absolute;top:0;left:0;width:100%;height:3px}
+  .vc:nth-child(1) .top{background:var(--green)} .vc:nth-child(2) .top{background:var(--blue)} .vc:nth-child(3) .top{background:var(--red)} .vc:nth-child(4) .top{background:var(--gray)}
+  .vc .big{font-family:'Anton',sans-serif;font-size:2.3rem;color:var(--white);line-height:1}
+  .vc .lbl{font-family:'Spline Sans Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+  footer{padding:30px 0;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
+  .disc{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--mute2);margin-top:14px;line-height:1.7}
+
+  @media(max-width:560px){
+    .teams{grid-template-columns:1fr;text-align:center;gap:12px}
+    .team.right{text-align:center}
+    .team.right .host-tag{align-self:center}
+    .score{justify-self:center}
+    .badge26{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="tricolor"><i class="g"></i><i class="b"></i><i class="r"></i></div>
+
+<header>
+  <div class="wrap">
+    <div class="badge26" id="badge"></div>
+    <div class="eyebrow">Análisis predictivo · Modelo Poisson–Elo</div>
+    <div class="slogan"><b>We</b> <b>Are</b> <b>26</b></div>
+    <h1>Copa Mundial<br><span class="grn">FIFA 26</span> <span class="out">Jornada 1</span></h1>
+    <p class="lede">Pronóstico matemático de los <b>10 primeros partidos</b> de la Copa del Mundo, combinando el ranking FIFA de junio 2026, las simulaciones del supercomputador de Opta, la simulación de EA Sports y un modelo de goles esperados Poisson.</p>
+    <div class="meta-row">
+      <span class="chip"><b>11–14</b> JUN 2026</span>
+      <span class="chip">SEDES: <b>MX · USA · CAN</b></span>
+      <span class="chip">48 SELECCIONES</span>
+      <span class="chip">RANKING FIFA: <b>06 JUN 2026</b></span>
+    </div>
+  </div>
+</header>
+
+<section class="method">
+  <div class="wrap">
+    <div class="sec-label"><span>01</span> &nbsp;/&nbsp; Metodología</div>
+    <p style="max-width:640px;color:#dadcd9">Cada partido se modela como dos variables de <b style="color:#fff">Poisson</b> independientes. La tasa de goles esperados de cada selección se deriva de la diferencia de puntos FIFA (escala tipo Elo), ajustada por la ventaja de localía de los anfitriones. La probabilidad de cada marcador se integra sobre la matriz de resultados 0–6, y cada pronóstico se acompaña de su justificación analítica.</p>
+
+    <div class="formula">
+λ<span class="g">_local</span> = 1.35 · <span class="k">e</span>^( (R<span class="g">a</span> − R<span class="g">b</span>) / 400 )<br>
+P(i, j) = Poisson(i ; λ<span class="g">local</span>) · Poisson(j ; λ<span class="g">visita</span>)<br>
+P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// R = puntos FIFA + localía</span>
+    </div>
+
+    <div class="inputs">
+      <div class="inp"><span class="bar"></span><div class="n">INPUT 01</div><h4>Ranking FIFA</h4><p>Puntos oficiales del 6 jun 2026. Argentina, España y Francia encabezan; base de la fuerza relativa.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">INPUT 02</div><h4>Opta Supercomputer</h4><p>25.000 simulaciones del torneo. España favorita (16,1%), seguida de Francia, Inglaterra y Argentina.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">INPUT 03</div><h4>EA Sports FC</h4><p>Simulación del videojuego, históricamente acertada en mundiales recientes; coincide con España como favorita.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">INPUT 04</div><h4>Localía + forma</h4><p>+80 pts a los anfitriones (MEX, USA, CAN) y ajuste por amistosos y resultados recientes de clasificación.</p></div>
+    </div>
+
+    <p class="sources">Fuentes consultadas:
+      <a href="https://inside.fifa.com/fifa-world-ranking/men">FIFA World Ranking</a>,
+      <a href="https://theanalyst.com/articles/who-will-win-2026-fifa-world-cup-predictions-opta-supercomputer">Opta Analyst</a>,
+      <a href="https://www.espn.com/soccer/story/_/id/49001555">ESPN Power Rankings</a>,
+      <a href="https://www.foxsports.com/stories/soccer/2026-world-cup-power-rankings-alexi-lalas">FOX Sports</a>,
+      <a href="https://bleacherreport.com/articles/25434991">Bleacher Report</a>.
+    </p>
+  </div>
+</section>
+
+<section class="matches">
+  <div class="wrap">
+    <div class="sec-label"><span>02</span> &nbsp;/&nbsp; Pronóstico partido a partido</div>
+    <div id="list"></div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <div class="sec-label"><span>03</span> &nbsp;/&nbsp; Lectura del modelo</div>
+    <p style="max-width:640px;color:#dadcd9">De los 10 partidos, el modelo proyecta <b style="color:#fff">7 victorias del favorito</b>, y solo un duelo —<b style="color:#fff">Brasil vs Marruecos</b>— prácticamente en equilibrio (a 5 puntos FIFA de distancia).</p>
+    <div class="vgrid" id="verdict"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Predicciones generadas mediante modelo Poisson–Elo · datos al 10 jun 2026 · Paleta oficial FWC 2026 (verde · azul · rojo · gris).</div>
+    <div class="disc">Aviso: las probabilidades son salidas de un modelo estadístico, no recomendaciones de apuesta. El fútbol es, por diseño, un deporte de alta varianza: incluso un 84% de probabilidad implica que 1 de cada 6 veces ocurre lo contrario. Úsese como análisis, no como certeza.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const b=document.getElementById('badge'); if(!b)return;
+  // distribución tricolor del bloque "26"
+  const map={1:'g',2:'g',7:'b',8:'rd',9:'g',13:'r',14:'b',15:'g',16:'b',20:'g',21:'r',22:'b',27:'rd',28:'g',29:'r',34:'b',35:'g'};
+  for(let k=0;k<36;k++){const i=document.createElement('i');
+    if(map[k])i.className=map[k]; b.appendChild(i);}
+})();
+
+const DATA = [
+{"a":"México","b":"Sudáfrica","fa":1681,"fb":1450,"grupo":"A","sede":"Estadio Azteca, CDMX","fecha":"Jue 11 Jun","xa":2.94,"xb":0.62,"ga":2,"gb":0,"pa":81,"pe":11,"pb":5,"host":"a","nota":"Brecha de 231 puntos FIFA (1681 vs 1450), la tercera mayor de la jornada. A esa diferencia el modelo suma la localía total del Azteca (+80 pts), elevando el xG mexicano a 2.94 frente a 0.62. El 81% de victoria refleja un favoritismo casi unilateral en el partido inaugural."},
+{"a":"Corea del Sur","b":"Chequia","fa":1575,"fb":1530,"grupo":"A","sede":"Estadio Akron, Guadalajara","fecha":"Jue 11 Jun","xa":1.51,"xb":1.21,"ga":1,"gb":1,"pa":44,"pe":25,"pb":30,"host":"","nota":"Solo 45 puntos FIFA separan a ambas (1575 vs 1530): el duelo más parejo del Grupo A. El xG queda casi igualado (1.51–1.21) y la probabilidad de empate sube al 25%. Corea es ligeramente favorita por el plus individual de Son Heung-min, pero el modelo no descarta el reparto de puntos."},
+{"a":"Canadá","b":"Bosnia","fa":1540,"fb":1490,"grupo":"B","sede":"BMO Field, Toronto","fecha":"Vie 12 Jun","xa":1.87,"xb":0.98,"ga":1,"gb":0,"pa":58,"pe":22,"pb":19,"host":"a","nota":"En puntos puros la diferencia es de solo 50, pero la localía en Toronto (+80) inclina la balanza: el xG canadiense pasa a 1.87 vs 0.98. Bosnia llega como ganador del repechaje europeo, con menos rodaje. Marcador ajustado pero favorable al anfitrión: 58% de victoria."},
+{"a":"Estados Unidos","b":"Paraguay","fa":1673,"fb":1545,"grupo":"D","sede":"SoFi Stadium, Los Ángeles","fecha":"Vie 12 Jun","xa":2.27,"xb":0.80,"ga":2,"gb":0,"pa":70,"pe":18,"pb":12,"host":"a","nota":"128 puntos FIFA de ventaja más la localía (+80) dan a EE.UU. un xG de 2.27 contra 0.80. La Paraguay de orden defensivo limita el marcador, pero su escasa producción ofensiva la deja en 12% de victoria. El equipo de Pochettino parte como claro favorito en casa."},
+{"a":"Qatar","b":"Suiza","fa":1450,"fb":1649,"grupo":"B","sede":"Levi's Stadium, Santa Clara","fecha":"Sáb 13 Jun","xa":0.82,"xb":2.22,"ga":0,"gb":2,"pa":12,"pe":18,"pb":68,"host":"","nota":"Único partido donde el visitante nominal domina con claridad: Suiza es top 20 FIFA (1649) y supera a Qatar por 199 puntos. El xG suizo (2.22) casi triplica al catarí (0.82). El 68% para Suiza refleja una jerarquía sin localía que la compense."},
+{"a":"Brasil","b":"Marruecos","fa":1761,"fb":1756,"grupo":"C","sede":"MetLife Stadium, Nueva Jersey","fecha":"Sáb 13 Jun","xa":1.37,"xb":1.33,"ga":1,"gb":1,"pa":38,"pe":26,"pb":36,"host":"","nota":"El partido más equilibrado del torneo en esta jornada: apenas 5 puntos FIFA (1761 vs 1756). El xG es casi idéntico (1.37–1.33) y las probabilidades de victoria quedan a 2 puntos (38% vs 36%). Marruecos, semifinalista en 2022, justifica un empate como resultado más estable del modelo."},
+{"a":"Haití","b":"Escocia","fa":1290,"fb":1500,"grupo":"C","sede":"Gillette Stadium, Boston","fecha":"Sáb 13 Jun","xa":0.80,"xb":2.28,"ga":0,"gb":2,"pa":12,"pe":18,"pb":70,"host":"","nota":"La mayor asimetría por ranking tras Alemania–Curazao: 210 puntos a favor de Escocia (1500 vs 1290). Haití es la selección peor valorada del Mundial. El xG escocés (2.28) frente al haitiano (0.80) sostiene un 70% de victoria visitante."},
+{"a":"Australia","b":"Turquía","fa":1500,"fb":1565,"grupo":"D","sede":"BC Place, Vancouver","fecha":"Sáb 13 Jun","xa":1.15,"xb":1.59,"ga":1,"gb":1,"pa":28,"pe":25,"pb":47,"host":"","nota":"Turquía aventaja por 65 puntos FIFA y su mayor talento individual eleva su xG a 1.59 frente a 1.15. El 47% turco no llega a mayoría absoluta porque Australia compite con orden y físico, así que el modelo deja abierta la puerta al empate (25%)."},
+{"a":"Costa de Marfil","b":"Ecuador","fa":1530,"fb":1570,"grupo":"E","sede":"Lincoln Financial Field, Filadelfia","fecha":"Dom 14 Jun","xa":1.22,"xb":1.49,"ga":1,"gb":1,"pa":31,"pe":25,"pb":43,"host":"","nota":"40 puntos FIFA separan a Ecuador (1570) de Costa de Marfil (1530). El bloque defensivo ecuatoriano y el liderazgo de Caicedo le dan ventaja (xG 1.49 vs 1.22, 43% de victoria), pero el regreso marfileño tras 12 años hace del empate un escenario verosímil."},
+{"a":"Alemania","b":"Curazao","fa":1730,"fb":1330,"grupo":"E","sede":"NRG Stadium, Houston","fecha":"Dom 14 Jun","xa":3.67,"xb":0.50,"ga":3,"gb":0,"pa":84,"pe":6,"pb":2,"host":"","nota":"La mayor brecha de las diez: 400 puntos FIFA (1730 vs 1330). El xG alemán se dispara a 3.67 contra 0.50 del debutante más pequeño del Mundial (156.000 habitantes). El 84% de victoria y la mínima probabilidad de empate (6%) hacen de este el resultado más predecible de la jornada."}
+];
+
+const list = document.getElementById('list');
+DATA.forEach((m,i)=>{
+  const hostA = m.host==='a' ? '<span class="host-tag">ANFITRIÓN</span>' : '';
+  const hostB = m.host==='b' ? '<span class="host-tag">ANFITRIÓN</span>' : '';
+  const el = document.createElement('div');
+  el.className='match';
+  el.innerHTML = `
+    <div class="m-top">
+      <span><span class="m-no">PARTIDO ${String(i+1).padStart(2,'0')}</span> · ${m.fecha}</span>
+      <span>${m.sede}</span>
+      <span class="m-grp">GRUPO ${m.grupo}</span>
+    </div>
+    <div class="m-body">
+      <div class="teams">
+        <div class="team">
+          <span class="name">${m.a}</span>
+          <span class="fifa">FIFA ${m.fa} pts</span>
+          ${hostA}
+        </div>
+        <div class="score"><span class="s">${m.ga}</span><em>—</em><span class="s">${m.gb}</span></div>
+        <div class="team right">
+          <span class="name">${m.b}</span>
+          <span class="fifa">FIFA ${m.fb} pts</span>
+          ${hostB}
+        </div>
+      </div>
+      <div class="pbar">
+        <div class="pa" style="flex:${m.pa}">${m.pa}%</div>
+        <div class="pe" style="flex:${m.pe}">${m.pe>8?m.pe+'%':''}</div>
+        <div class="pb" style="flex:${m.pb}">${m.pb}%</div>
+      </div>
+      <div class="pleg">
+        <span class="da">◤ Gana ${m.a}</span><span>Empate</span><span class="db">Gana ${m.b} ◥</span>
+      </div>
+      <div class="xg">Goles esperados (xG): <b>${m.a} ${m.xa}</b> &nbsp;·&nbsp; <b>${m.b} ${m.xb}</b></div>
+      <p class="note"><span class="why">Justificación analítica</span>${m.nota}</p>
+    </div>`;
+  list.appendChild(el);
+});
+
+const favWins = DATA.filter(m=>Math.abs(m.pa-m.pb)>10).length;
+const closest = DATA.reduce((a,b)=>Math.abs(a.pa-a.pb)<Math.abs(b.pa-b.pb)?a:b);
+const biggest = DATA.reduce((a,b)=>Math.max(a.pa,a.pb)>Math.max(b.pa,b.pb)?a:b);
+const totalGoals = DATA.reduce((s,m)=>s+m.ga+m.gb,0);
+const v=[
+  {big:favWins, lbl:'Favoritos que ganan'},
+  {big:totalGoals, lbl:'Goles proyectados (10 PJ)'},
+  {big:Math.max(biggest.pa,biggest.pb)+'%', lbl:`Más probable: ${biggest.a}`},
+  {big:'±'+Math.abs(closest.pa-closest.pb)+'%', lbl:`Más parejo: ${closest.a} v ${closest.b}`}
+];
+const vg=document.getElementById('verdict');
+v.forEach(c=>{const d=document.createElement('div');d.className='vc';
+  d.innerHTML=`<span class="top"></span><div class="big">${c.big}</div><div class="lbl">${c.lbl}</div>`;vg.appendChild(d);});
+</script>
+</body>
+</html>
