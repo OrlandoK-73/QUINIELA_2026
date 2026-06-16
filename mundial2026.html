@@ -78,6 +78,17 @@
   .sec-label span{color:var(--green)}
   .formula{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--green);padding:20px 22px;border-radius:3px;margin:22px 0;font-family:'Spline Sans Mono',monospace;font-size:.86rem;color:#dcdedb;overflow-x:auto}
   .formula .k{color:var(--green-lt)} .formula .g{color:var(--green)} .formula .c{color:var(--mute2)}
+  /* bloque calibración */
+  .calib{border:1px solid var(--red);border-radius:4px;background:rgba(230,29,37,.06);padding:18px 20px;margin:22px 0}
+  .calib-head{font-family:'Spline Sans Mono',monospace;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:#ff7a64;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .calib-head .dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .calib-sub{color:var(--mute2);text-transform:none;letter-spacing:.02em;font-weight:400}
+  .calib-txt{color:#dadcd9;font-size:.92rem;margin:14px 0 16px;max-width:680px}
+  .calib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+  .calib-c{border:1px solid var(--line);background:var(--ink);border-radius:3px;padding:13px 15px;font-size:.84rem;color:var(--muted);position:relative}
+  .calib-c .cn{position:absolute;top:10px;right:12px;font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--red);opacity:.5}
+  .calib-c b{color:var(--green-lt)}
   .inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:8px}
   .inp{border:1px solid var(--line);padding:16px 17px;border-radius:3px;background:var(--panel);position:relative;overflow:hidden}
   .inp .bar{position:absolute;top:0;left:0;width:3px;height:100%}
@@ -131,6 +142,57 @@
   footer{padding:30px 0;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted)}
   .disc{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--mute2);margin-top:14px;line-height:1.7}
 
+  /* sello Klement */
+  .klement-tag{font-family:'Spline Sans Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:#fff;background:linear-gradient(90deg,var(--green),var(--blue));padding:3px 8px;border-radius:2px;font-weight:600;white-space:nowrap}
+
+  /* partido ya jugado / resultado real */
+  .match.played{opacity:.96}
+  .played-tag{font-family:'Spline Sans Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--ink);background:var(--gray);padding:3px 8px;border-radius:2px;font-weight:600;white-space:nowrap}
+  .adjust-tag{font-family:'Spline Sans Mono',monospace;font-size:.58rem;letter-spacing:.06em;color:#fff;background:var(--red);padding:3px 8px;border-radius:2px;font-weight:600;white-space:nowrap}
+  .realbox{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:4px 0 16px;padding:13px 16px;border:1px solid var(--line);border-radius:4px;background:var(--ink)}
+  .realbox .lbl{font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .realbox .rscore{font-family:'Anton',sans-serif;font-size:1.5rem;letter-spacing:.04em}
+  .realbox .rscore .rs{color:var(--white)}
+  .acc{font-family:'Spline Sans Mono',monospace;font-size:.64rem;letter-spacing:.06em;padding:3px 9px;border-radius:2px;font-weight:600}
+  .acc.exacto{background:var(--green);color:#fff}
+  .acc.signo{background:rgba(60,172,59,.25);color:var(--green-lt)}
+  .acc.fallo{background:rgba(230,29,37,.18);color:#ff7a64}
+  .model-mini{font-family:'Spline Sans Mono',monospace;font-size:.7rem;color:var(--mute2)}
+  .model-mini b{color:var(--muted)}
+
+  /* ---------- QUINIELA / SEGUIMIENTO ---------- */
+  .quiniela{padding:46px 0;border-top:1px solid var(--line);background:var(--ink2)}
+  .q-intro{max-width:680px;color:#dadcd9;margin-bottom:8px}
+  .q-note{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--mute2);margin-bottom:24px}
+  .q-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;align-items:center}
+  .q-controls select,.q-controls input{background:var(--panel);border:1px solid var(--line);color:var(--white);font-family:'Spline Sans Mono',monospace;font-size:.8rem;padding:9px 11px;border-radius:3px}
+  .q-controls input{width:74px;text-align:center}
+  .q-controls .vs{color:var(--mute2);font-family:'Spline Sans Mono',monospace}
+  .q-btn{background:var(--green);color:#fff;border:none;font-family:'Spline Sans Mono',monospace;font-size:.78rem;font-weight:600;padding:9px 16px;border-radius:3px;cursor:pointer;letter-spacing:.04em;transition:background .2s}
+  .q-btn:hover{background:#2f9a2e}
+  .q-btn.alt{background:var(--blue)} .q-btn.alt:hover{background:#22307a}
+  .q-table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px}
+  table.q-table{width:100%;border-collapse:collapse;font-size:.84rem;min-width:560px}
+  .q-table th{background:var(--ink);font-family:'Spline Sans Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+  .q-table td{padding:11px 13px;border-bottom:1px solid var(--line);color:#e6e8e5}
+  .q-table tr:last-child td{border-bottom:none}
+  .q-table .match-cell{font-weight:600}
+  .q-table .model-cell{font-family:'Spline Sans Mono',monospace;color:var(--green-lt);white-space:nowrap}
+  .q-table .pick-cell{font-family:'Spline Sans Mono',monospace;white-space:nowrap}
+  .q-hit{color:var(--green-lt)} .q-miss{color:var(--mute2)}
+  .q-badge{display:inline-block;font-family:'Spline Sans Mono',monospace;font-size:.6rem;padding:2px 6px;border-radius:2px;margin-left:6px}
+  .q-badge.ok{background:rgba(60,172,59,.25);color:var(--green-lt)}
+  .q-badge.par{background:rgba(209,212,209,.2);color:var(--gray)}
+  .q-badge.miss{background:rgba(230,29,37,.18);color:#ff7a64}
+  .q-del{background:none;border:1px solid var(--line);color:var(--mute2);cursor:pointer;border-radius:3px;padding:3px 8px;font-size:.7rem;font-family:'Spline Sans Mono',monospace}
+  .q-del:hover{border-color:var(--red);color:var(--red)}
+  .q-empty{padding:26px;text-align:center;color:var(--mute2);font-family:'Spline Sans Mono',monospace;font-size:.8rem}
+  .q-leader{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:22px}
+  .q-lc{border:1px solid var(--line);background:var(--panel);border-radius:3px;padding:14px 16px}
+  .q-lc .nm{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.01em}
+  .q-lc .sc{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:4px}
+  .q-lc .sc b{color:var(--green-lt)}
+
   @media(max-width:560px){
     .teams{grid-template-columns:1fr;text-align:center;gap:12px}
     .team.right{text-align:center}
@@ -146,10 +208,10 @@
 <header>
   <div class="wrap">
     <div class="badge26" id="badge"></div>
-    <div class="eyebrow">Análisis predictivo · Modelo Poisson–Elo</div>
+    <div class="eyebrow">Análisis predictivo · Modelo Klement + MisterChip</div>
     <div class="slogan"><b>We</b> <b>Are</b> <b>26</b></div>
     <h1>Copa Mundial<br><span class="grn">FIFA 26</span> <span class="out">Jornada 1</span></h1>
-    <p class="lede">Pronóstico matemático de los <b>10 primeros partidos</b> de la Copa del Mundo, combinando el ranking FIFA de junio 2026, las simulaciones del supercomputador de Opta, la simulación de EA Sports y un modelo de goles esperados Poisson.</p>
+    <p class="lede">Pronóstico científico de los <b>primeros 25 partidos</b> de la Copa del Mundo con el <b>modelo Klement + MisterChip</b>. Los <b>16 ya disputados</b> muestran su resultado real y el acierto del modelo; los <b>siguientes</b> se recalcularon con un <b>ajuste por la evolución del torneo</b>. Cada pronóstico honra el <b>~45% de azar</b> que reconoce Klement.</p>
     <div class="meta-row">
       <span class="chip"><b>11–14</b> JUN 2026</span>
       <span class="chip">SEDES: <b>MX · USA · CAN</b></span>
@@ -162,27 +224,38 @@
 <section class="method">
   <div class="wrap">
     <div class="sec-label"><span>01</span> &nbsp;/&nbsp; Metodología</div>
-    <p style="max-width:640px;color:#dadcd9">Cada partido se modela como dos variables de <b style="color:#fff">Poisson</b> independientes. La tasa de goles esperados de cada selección se deriva de la diferencia de puntos FIFA (escala tipo Elo), ajustada por la ventaja de localía de los anfitriones. La probabilidad de cada marcador se integra sobre la matriz de resultados 0–6, y cada pronóstico se acompaña de su justificación analítica.</p>
+    <p style="max-width:680px;color:#dadcd9">El análisis combina <b style="color:#fff">dos pilares</b>. El <b style="color:#fff">modelo Klement</b> (econométrico, acertó a Alemania 2014, Francia 2018 y Argentina 2022) pondera ranking FIFA, PIB per cápita, población, temperatura de la sede (~14&nbsp;°C ideal) y ventaja local. El <b style="color:#fff">archivo de MisterChip</b> aporta el historial directo en Mundiales y los patrones estadísticos. Sobre ambos, un modelo de <b style="color:#fff">Poisson</b> traduce la diferencia de fuerza en goles esperados y probabilidades. Cada pronóstico honra el <b style="color:#fff">~45% de azar</b> que Klement reconoce: son probabilidades, no certezas.</p>
 
     <div class="formula">
-λ<span class="g">_local</span> = 1.35 · <span class="k">e</span>^( (R<span class="g">a</span> − R<span class="g">b</span>) / 400 )<br>
+λ<span class="g">_local</span> = 1.35 · <span class="k">e</span>^( (R<span class="g">a</span> − R<span class="g">b</span>) / 400 ) <span class="c">· ƒ_torneo</span><br>
 P(i, j) = Poisson(i ; λ<span class="g">local</span>) · Poisson(j ; λ<span class="g">visita</span>)<br>
-P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// R = puntos FIFA + localía</span>
+P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// ƒ_torneo = ajuste por partidos jugados</span>
+    </div>
+
+    <div class="calib">
+      <div class="calib-head"><span class="dot"></span> NUEVO · Ajuste por evolución del torneo <span class="calib-sub">(ƒ_torneo, recalibrado con los 16 partidos ya jugados)</span></div>
+      <p class="calib-txt">Tras la primera fecha, los datos reales obligaron a recalibrar el modelo. Lo observado: <b style="color:#fff">53% de empates</b> (muy por encima de lo normal), <b style="color:#fff">grandes favoritos europeos y sudamericanos decepcionando en su debut</b> (España 0-0, Brasil 1-1, Países Bajos 2-2, Suiza 1-1, Uruguay 1-1) y <b style="color:#fff">selecciones modestas compitiendo de igual a igual</b>. El modelo aplica ahora tres correcciones a los partidos aún no jugados:</p>
+      <div class="calib-grid">
+        <div class="calib-c"><span class="cn">A</span><b>−12% xG</b> a súper favoritos (Francia, Argentina, Portugal, Inglaterra, Países Bajos) en partidos donde su xG supera 2.5, por los flojos debuts de los candidatos.</div>
+        <div class="calib-c"><span class="cn">B</span><b>+0.30 gol</b> de piso a los <i>outsiders</i> con xG bajo: las cenicientas están rindiendo por encima de lo previsto.</div>
+        <div class="calib-c"><span class="cn">C</span><b>+6 pts</b> a la probabilidad de empate en duelos parejos (|Δλ| &lt; 0.8), por la altísima tasa de igualdades observada.</div>
+      </div>
     </div>
 
     <div class="inputs">
-      <div class="inp"><span class="bar"></span><div class="n">INPUT 01</div><h4>Ranking FIFA</h4><p>Puntos oficiales del 6 jun 2026. Argentina, España y Francia encabezan; base de la fuerza relativa.</p></div>
-      <div class="inp"><span class="bar"></span><div class="n">INPUT 02</div><h4>Opta Supercomputer</h4><p>25.000 simulaciones del torneo. España favorita (16,1%), seguida de Francia, Inglaterra y Argentina.</p></div>
-      <div class="inp"><span class="bar"></span><div class="n">INPUT 03</div><h4>EA Sports FC</h4><p>Simulación del videojuego, históricamente acertada en mundiales recientes; coincide con España como favorita.</p></div>
-      <div class="inp"><span class="bar"></span><div class="n">INPUT 04</div><h4>Localía + forma</h4><p>+80 pts a los anfitriones (MEX, USA, CAN) y ajuste por amistosos y resultados recientes de clasificación.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">CAPA 01 · KLEMENT</div><h4>Econométrico</h4><p>Ranking FIFA, PIB per cápita, población, temperatura de sede y ventaja local. Predice a Países Bajos campeón y Portugal 1º del Grupo K.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">CAPA 02 · MISTERCHIP</div><h4>Archivo histórico</h4><p>Head-to-head en Mundiales y patrones por fase, desde el Archivo Mundial (bdfutbol) de Alexis Martín-Tamayo.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">CAPA 03 · FORMA</div><h4>Momento actual</h4><p>Últimos 8–10 partidos, jugadores clave, bajas y estado físico de cada selección al inicio del torneo.</p></div>
+      <div class="inp"><span class="bar"></span><div class="n">CAPA 04 · CONTEXTO</div><h4>Poisson + azar</h4><p>Goles esperados vía Poisson, altitud (Azteca ~2.240 m), localía y el ~45% de azar que el modelo reconoce.</p></div>
     </div>
 
     <p class="sources">Fuentes consultadas:
       <a href="https://inside.fifa.com/fifa-world-ranking/men">FIFA World Ranking</a>,
-      <a href="https://theanalyst.com/articles/who-will-win-2026-fifa-world-cup-predictions-opta-supercomputer">Opta Analyst</a>,
-      <a href="https://www.espn.com/soccer/story/_/id/49001555">ESPN Power Rankings</a>,
-      <a href="https://www.foxsports.com/stories/soccer/2026-world-cup-power-rankings-alexi-lalas">FOX Sports</a>,
-      <a href="https://bleacherreport.com/articles/25434991">Bleacher Report</a>.
+      <a href="https://mundiales.bdfutbol.com">Archivo Mundial · MisterChip</a>,
+      <a href="https://www.panmureliberum.com">Klement · Panmure Liberum</a>,
+      <a href="https://www.sofascore.com">Sofascore</a>,
+      <a href="https://www.espn.com/soccer/">ESPN</a>.
+      <span style="display:block;margin-top:8px;color:var(--mute2)">El modelo Klement acertó el campeón de 2014, 2018 y 2022. Aun así, su autor advierte: «si apuestas dinero basándote en este modelo, nadie puede ayudarte».</span>
     </p>
   </div>
 </section>
@@ -197,15 +270,52 @@ P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// R = p
 <section class="verdict">
   <div class="wrap">
     <div class="sec-label"><span>03</span> &nbsp;/&nbsp; Lectura del modelo</div>
-    <p style="max-width:640px;color:#dadcd9">De los 10 partidos, el modelo proyecta <b style="color:#fff">7 victorias del favorito</b>, y solo un duelo —<b style="color:#fff">Brasil vs Marruecos</b>— prácticamente en equilibrio (a 5 puntos FIFA de distancia).</p>
+    <p style="max-width:680px;color:#dadcd9">La primera fecha fue <b style="color:#fff">atípicamente igualada</b>: una lluvia de empates y varios favoritos pinchando obligaron a recalibrar el modelo. El balance honra el <b style="color:#fff">~45% de azar</b> de Klement — incluso un buen modelo falla mucho cuando el torneo se llena de sorpresas. Las predicciones de los partidos <b style="color:#fff">aún no jugados</b> (16–18 jun) ya incorporan el ajuste por evolución. Anclas de Klement para la región: <b style="color:#fff">Portugal 1º y Colombia 2ª</b> del Grupo K.</p>
     <div class="vgrid" id="verdict"></div>
+  </div>
+</section>
+
+<section class="quiniela">
+  <div class="wrap">
+    <div class="sec-label"><span>04</span> &nbsp;/&nbsp; Seguimiento de la quiniela</div>
+    <p class="q-intro">Espacio para registrar los pronósticos de los integrantes de la quiniela. <b style="color:#fff">Para los partidos ya jugados, los aciertos se miden contra el resultado real</b> (3 pts marcador exacto · 1 pt signo); los pendientes se comparan con el modelo a modo de referencia. La predicción oficial del sitio sigue siendo siempre la del modelo Klement + MisterChip.</p>
+    <p class="q-note">Los datos se guardan en este navegador. No se comparten ni salen de tu dispositivo.</p>
+
+    <div class="q-controls">
+      <input type="text" id="q-name" placeholder="Nombre" style="width:130px" maxlength="20">
+      <select id="q-match"></select>
+      <input type="number" id="q-ga" placeholder="0" min="0" max="20">
+      <span class="vs">—</span>
+      <input type="number" id="q-gb" placeholder="0" min="0" max="20">
+      <button class="q-btn" id="q-add">Registrar pronóstico</button>
+      <button class="q-btn alt" id="q-demo">Cargar ejemplo</button>
+    </div>
+
+    <div class="q-table-wrap">
+      <table class="q-table">
+        <thead>
+          <tr>
+            <th>Partido</th>
+            <th>Modelo</th>
+            <th>Resultado real</th>
+            <th>Participante</th>
+            <th>Su pronóstico</th>
+            <th>Resultado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="q-body"></tbody>
+      </table>
+    </div>
+
+    <div class="q-leader" id="q-leader"></div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div>Predicciones generadas mediante modelo Poisson–Elo · datos al 10 jun 2026 · Paleta oficial FWC 2026 (verde · azul · rojo · gris).</div>
-    <div class="disc">Aviso: las probabilidades son salidas de un modelo estadístico, no recomendaciones de apuesta. El fútbol es, por diseño, un deporte de alta varianza: incluso un 84% de probabilidad implica que 1 de cada 6 veces ocurre lo contrario. Úsese como análisis, no como certeza.</div>
+    <div>Predicciones generadas mediante modelo Klement + MisterChip + Poisson con ajuste por evolución · datos al 15 jun 2026 · Paleta oficial FWC 2026 (verde · azul · rojo · gris).</div>
+    <div class="disc">Aviso: las probabilidades son salidas de un modelo estadístico, no recomendaciones de apuesta. El propio Joachim Klement advierte que ~45% del resultado de un partido es azar y que «si apuestas dinero basándote en este modelo, nadie puede ayudarte». Úsese como análisis, nunca como certeza ni como resultado oficial.</div>
   </div>
 </footer>
 
@@ -218,30 +328,38 @@ P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// R = p
     if(map[k])i.className=map[k]; b.appendChild(i);}
 })();
 
-const DATA = [
-{"a":"México","b":"Sudáfrica","fa":1681,"fb":1450,"grupo":"A","sede":"Estadio Azteca, CDMX","fecha":"Jue 11 Jun","xa":2.94,"xb":0.62,"ga":2,"gb":0,"pa":81,"pe":11,"pb":5,"host":"a","nota":"Brecha de 231 puntos FIFA (1681 vs 1450), la tercera mayor de la jornada. A esa diferencia el modelo suma la localía total del Azteca (+80 pts), elevando el xG mexicano a 2.94 frente a 0.62. El 81% de victoria refleja un favoritismo casi unilateral en el partido inaugural."},
-{"a":"Corea del Sur","b":"Chequia","fa":1575,"fb":1530,"grupo":"A","sede":"Estadio Akron, Guadalajara","fecha":"Jue 11 Jun","xa":1.51,"xb":1.21,"ga":1,"gb":1,"pa":44,"pe":25,"pb":30,"host":"","nota":"Solo 45 puntos FIFA separan a ambas (1575 vs 1530): el duelo más parejo del Grupo A. El xG queda casi igualado (1.51–1.21) y la probabilidad de empate sube al 25%. Corea es ligeramente favorita por el plus individual de Son Heung-min, pero el modelo no descarta el reparto de puntos."},
-{"a":"Canadá","b":"Bosnia","fa":1540,"fb":1490,"grupo":"B","sede":"BMO Field, Toronto","fecha":"Vie 12 Jun","xa":1.87,"xb":0.98,"ga":1,"gb":0,"pa":58,"pe":22,"pb":19,"host":"a","nota":"En puntos puros la diferencia es de solo 50, pero la localía en Toronto (+80) inclina la balanza: el xG canadiense pasa a 1.87 vs 0.98. Bosnia llega como ganador del repechaje europeo, con menos rodaje. Marcador ajustado pero favorable al anfitrión: 58% de victoria."},
-{"a":"Estados Unidos","b":"Paraguay","fa":1673,"fb":1545,"grupo":"D","sede":"SoFi Stadium, Los Ángeles","fecha":"Vie 12 Jun","xa":2.27,"xb":0.80,"ga":2,"gb":0,"pa":70,"pe":18,"pb":12,"host":"a","nota":"128 puntos FIFA de ventaja más la localía (+80) dan a EE.UU. un xG de 2.27 contra 0.80. La Paraguay de orden defensivo limita el marcador, pero su escasa producción ofensiva la deja en 12% de victoria. El equipo de Pochettino parte como claro favorito en casa."},
-{"a":"Qatar","b":"Suiza","fa":1450,"fb":1649,"grupo":"B","sede":"Levi's Stadium, Santa Clara","fecha":"Sáb 13 Jun","xa":0.82,"xb":2.22,"ga":0,"gb":2,"pa":12,"pe":18,"pb":68,"host":"","nota":"Único partido donde el visitante nominal domina con claridad: Suiza es top 20 FIFA (1649) y supera a Qatar por 199 puntos. El xG suizo (2.22) casi triplica al catarí (0.82). El 68% para Suiza refleja una jerarquía sin localía que la compense."},
-{"a":"Brasil","b":"Marruecos","fa":1761,"fb":1756,"grupo":"C","sede":"MetLife Stadium, Nueva Jersey","fecha":"Sáb 13 Jun","xa":1.37,"xb":1.33,"ga":1,"gb":1,"pa":38,"pe":26,"pb":36,"host":"","nota":"El partido más equilibrado del torneo en esta jornada: apenas 5 puntos FIFA (1761 vs 1756). El xG es casi idéntico (1.37–1.33) y las probabilidades de victoria quedan a 2 puntos (38% vs 36%). Marruecos, semifinalista en 2022, justifica un empate como resultado más estable del modelo."},
-{"a":"Haití","b":"Escocia","fa":1290,"fb":1500,"grupo":"C","sede":"Gillette Stadium, Boston","fecha":"Sáb 13 Jun","xa":0.80,"xb":2.28,"ga":0,"gb":2,"pa":12,"pe":18,"pb":70,"host":"","nota":"La mayor asimetría por ranking tras Alemania–Curazao: 210 puntos a favor de Escocia (1500 vs 1290). Haití es la selección peor valorada del Mundial. El xG escocés (2.28) frente al haitiano (0.80) sostiene un 70% de victoria visitante."},
-{"a":"Australia","b":"Turquía","fa":1500,"fb":1565,"grupo":"D","sede":"BC Place, Vancouver","fecha":"Sáb 13 Jun","xa":1.15,"xb":1.59,"ga":1,"gb":1,"pa":28,"pe":25,"pb":47,"host":"","nota":"Turquía aventaja por 65 puntos FIFA y su mayor talento individual eleva su xG a 1.59 frente a 1.15. El 47% turco no llega a mayoría absoluta porque Australia compite con orden y físico, así que el modelo deja abierta la puerta al empate (25%)."},
-{"a":"Costa de Marfil","b":"Ecuador","fa":1530,"fb":1570,"grupo":"E","sede":"Lincoln Financial Field, Filadelfia","fecha":"Dom 14 Jun","xa":1.22,"xb":1.49,"ga":1,"gb":1,"pa":31,"pe":25,"pb":43,"host":"","nota":"40 puntos FIFA separan a Ecuador (1570) de Costa de Marfil (1530). El bloque defensivo ecuatoriano y el liderazgo de Caicedo le dan ventaja (xG 1.49 vs 1.22, 43% de victoria), pero el regreso marfileño tras 12 años hace del empate un escenario verosímil."},
-{"a":"Alemania","b":"Curazao","fa":1730,"fb":1330,"grupo":"E","sede":"NRG Stadium, Houston","fecha":"Dom 14 Jun","xa":3.67,"xb":0.50,"ga":3,"gb":0,"pa":84,"pe":6,"pb":2,"host":"","nota":"La mayor brecha de las diez: 400 puntos FIFA (1730 vs 1330). El xG alemán se dispara a 3.67 contra 0.50 del debutante más pequeño del Mundial (156.000 habitantes). El 84% de victoria y la mínima probabilidad de empate (6%) hacen de este el resultado más predecible de la jornada."}
-];
+const DATA = [{"a": "México", "b": "Sudáfrica", "fa": 1681, "fb": 1450, "grupo": "A", "sede": "Estadio Azteca, CDMX", "fecha": "Jue 11 Jun", "xa": 2.94, "xb": 0.62, "ga": 2, "gb": 0, "pa": 81, "pe": 11, "pb": 5, "host": "a", "nota": "Brecha de 231 puntos FIFA (1681 vs 1450), la tercera mayor de la jornada. A esa diferencia el modelo suma la localía total del Azteca (+80 pts), elevando el xG mexicano a 2.94 frente a 0.62. El 81% de victoria refleja un favoritismo casi unilateral en el partido inaugural.", "klement": false, "jugado": true, "real_ga": 2, "real_gb": 0, "acierto": "exacto"}, {"a": "Corea del Sur", "b": "Chequia", "fa": 1575, "fb": 1530, "grupo": "A", "sede": "Estadio Akron, Guadalajara", "fecha": "Jue 11 Jun", "xa": 1.51, "xb": 1.21, "ga": 1, "gb": 1, "pa": 44, "pe": 25, "pb": 30, "host": "", "nota": "Solo 45 puntos FIFA separan a ambas (1575 vs 1530): el duelo más parejo del Grupo A. El xG queda casi igualado (1.51–1.21) y la probabilidad de empate sube al 25%. Corea es ligeramente favorita por el plus individual de Son Heung-min, pero el modelo no descarta el reparto de puntos.", "klement": false, "jugado": true, "real_ga": 2, "real_gb": 1, "acierto": "fallo"}, {"a": "Canadá", "b": "Bosnia", "fa": 1540, "fb": 1490, "grupo": "B", "sede": "BMO Field, Toronto", "fecha": "Vie 12 Jun", "xa": 1.87, "xb": 0.98, "ga": 1, "gb": 0, "pa": 58, "pe": 22, "pb": 19, "host": "a", "nota": "En puntos puros la diferencia es de solo 50, pero la localía en Toronto (+80) inclina la balanza: el xG canadiense pasa a 1.87 vs 0.98. Bosnia llega como ganador del repechaje europeo, con menos rodaje. Marcador ajustado pero favorable al anfitrión: 58% de victoria.", "klement": false, "jugado": true, "real_ga": 1, "real_gb": 1, "acierto": "fallo"}, {"a": "Estados Unidos", "b": "Paraguay", "fa": 1673, "fb": 1545, "grupo": "D", "sede": "SoFi Stadium, Los Ángeles", "fecha": "Vie 12 Jun", "xa": 2.27, "xb": 0.8, "ga": 2, "gb": 0, "pa": 70, "pe": 18, "pb": 12, "host": "a", "nota": "128 puntos FIFA de ventaja más la localía (+80) dan a EE.UU. un xG de 2.27 contra 0.80. La Paraguay de orden defensivo limita el marcador, pero su escasa producción ofensiva la deja en 12% de victoria. El equipo de Pochettino parte como claro favorito en casa.", "klement": false, "jugado": true, "real_ga": 4, "real_gb": 1, "acierto": "signo"}, {"a": "Qatar", "b": "Suiza", "fa": 1450, "fb": 1649, "grupo": "B", "sede": "Levi's Stadium, Santa Clara", "fecha": "Sáb 13 Jun", "xa": 0.82, "xb": 2.22, "ga": 0, "gb": 2, "pa": 12, "pe": 18, "pb": 68, "host": "", "nota": "Único partido donde el visitante nominal domina con claridad: Suiza es top 20 FIFA (1649) y supera a Qatar por 199 puntos. El xG suizo (2.22) casi triplica al catarí (0.82). El 68% para Suiza refleja una jerarquía sin localía que la compense.", "klement": false, "jugado": true, "real_ga": 1, "real_gb": 1, "acierto": "fallo"}, {"a": "Brasil", "b": "Marruecos", "fa": 1761, "fb": 1756, "grupo": "C", "sede": "MetLife Stadium, Nueva Jersey", "fecha": "Sáb 13 Jun", "xa": 1.37, "xb": 1.33, "ga": 1, "gb": 1, "pa": 38, "pe": 26, "pb": 36, "host": "", "nota": "El partido más equilibrado del torneo en esta jornada: apenas 5 puntos FIFA (1761 vs 1756). El xG es casi idéntico (1.37–1.33) y las probabilidades de victoria quedan a 2 puntos (38% vs 36%). Marruecos, semifinalista en 2022, justifica un empate como resultado más estable del modelo.", "klement": false, "jugado": true, "real_ga": 1, "real_gb": 1, "acierto": "exacto"}, {"a": "Haití", "b": "Escocia", "fa": 1290, "fb": 1500, "grupo": "C", "sede": "Gillette Stadium, Boston", "fecha": "Sáb 13 Jun", "xa": 0.8, "xb": 2.28, "ga": 0, "gb": 2, "pa": 12, "pe": 18, "pb": 70, "host": "", "nota": "La mayor asimetría por ranking tras Alemania–Curazao: 210 puntos a favor de Escocia (1500 vs 1290). Haití es la selección peor valorada del Mundial. El xG escocés (2.28) frente al haitiano (0.80) sostiene un 70% de victoria visitante.", "klement": false, "jugado": true, "real_ga": 0, "real_gb": 1, "acierto": "signo"}, {"a": "Australia", "b": "Turquía", "fa": 1500, "fb": 1565, "grupo": "D", "sede": "BC Place, Vancouver", "fecha": "Sáb 13 Jun", "xa": 1.15, "xb": 1.59, "ga": 1, "gb": 1, "pa": 28, "pe": 25, "pb": 47, "host": "", "nota": "Turquía aventaja por 65 puntos FIFA y su mayor talento individual eleva su xG a 1.59 frente a 1.15. El 47% turco no llega a mayoría absoluta porque Australia compite con orden y físico, así que el modelo deja abierta la puerta al empate (25%).", "klement": false, "jugado": true, "real_ga": 2, "real_gb": 0, "acierto": "fallo"}, {"a": "Costa de Marfil", "b": "Ecuador", "fa": 1530, "fb": 1570, "grupo": "E", "sede": "Lincoln Financial Field, Filadelfia", "fecha": "Dom 14 Jun", "xa": 1.22, "xb": 1.49, "ga": 1, "gb": 1, "pa": 31, "pe": 25, "pb": 43, "host": "", "nota": "40 puntos FIFA separan a Ecuador (1570) de Costa de Marfil (1530). El bloque defensivo ecuatoriano y el liderazgo de Caicedo le dan ventaja (xG 1.49 vs 1.22, 43% de victoria), pero el regreso marfileño tras 12 años hace del empate un escenario verosímil.", "klement": false, "jugado": true, "real_ga": 1, "real_gb": 0, "acierto": "fallo"}, {"a": "Alemania", "b": "Curazao", "fa": 1730, "fb": 1330, "grupo": "E", "sede": "NRG Stadium, Houston", "fecha": "Dom 14 Jun", "xa": 3.67, "xb": 0.5, "ga": 3, "gb": 0, "pa": 84, "pe": 6, "pb": 2, "host": "", "nota": "La mayor brecha de las diez: 400 puntos FIFA (1730 vs 1330). El xG alemán se dispara a 3.67 contra 0.50 del debutante más pequeño del Mundial (156.000 habitantes). El 84% de victoria y la mínima probabilidad de empate (6%) hacen de este el resultado más predecible de la jornada.", "klement": false, "jugado": true, "real_ga": 7, "real_gb": 1, "acierto": "signo"}, {"a": "Países Bajos", "b": "Japón", "fa": 1754, "fb": 1652, "grupo": "F", "sede": "AT&T Stadium, Dallas", "fecha": "Dom 14 Jun", "xa": 1.74, "xb": 1.05, "ga": 2, "gb": 1, "pa": 53, "pe": 24, "pb": 23, "host": "", "nota": "KLEMENT: Países Bajos es su gran favorito al título 2026; el modelo le da clima europeo ideal, plantel top-10 FIFA y población/PIB sólidos. Pero el propio Klement avisa de Japón como bestia negra (predice que elimina a Brasil en ronda de 32). MISTERCHIP: sin historial mundialista directo entre ambos. FORMA: la Oranje llega entera; Japón es para muchos la mejor asiática. El 53-24-23 refleja favoritismo neerlandés pero con un Japón que puede incomodar: marcador ajustado.", "klement": true, "jugado": true, "real_ga": 2, "real_gb": 2, "acierto": "fallo"}, {"a": "Suecia", "b": "Túnez", "fa": 1500, "fb": 1490, "grupo": "F", "sede": "Estadio Monterrey", "fecha": "Dom 14 Jun", "xa": 1.38, "xb": 1.32, "ga": 1, "gb": 1, "pa": 39, "pe": 26, "pb": 36, "host": "", "nota": "KLEMENT: apenas 10 puntos FIFA separan a ambas; el factor altitud/calor de Monterrey diluye ventajas. MISTERCHIP: cruce inédito en Mundiales. FORMA: Suecia recuperó pegada con su recambio generacional; Túnez es física y ordenada. El reparto de puntos (26% de empate) es el escenario más estable: dos selecciones parejas peleando el boleto que deje Países Bajos.", "klement": true, "jugado": true, "real_ga": 5, "real_gb": 1, "acierto": "fallo"}, {"a": "España", "b": "Cabo Verde", "fa": 1875, "fb": 1390, "grupo": "H", "sede": "Mercedes-Benz Stadium, Atlanta", "fecha": "Lun 15 Jun", "xa": 4.54, "xb": 0.4, "ga": 4, "gb": 0, "pa": 79, "pe": 3, "pb": 1, "host": "", "nota": "KLEMENT: España es semifinalista en su pronóstico (cae con Países Bajos); aquí enfrenta a un debutante absoluto. Brecha de 485 puntos FIFA, la mayor del bloque. MISTERCHIP: primer partido mundialista de Cabo Verde en la historia. FORMA: la Roja de la generación Lamine Yamal golea con autoridad. xG 4.54 vs 0.40: el resultado más desequilibrado de estos 15 partidos.", "klement": true, "jugado": true, "real_ga": 0, "real_gb": 0, "acierto": "fallo"}, {"a": "Bélgica", "b": "Egipto", "fa": 1730, "fb": 1510, "grupo": "G", "sede": "Lumen Field, Seattle", "fecha": "Lun 15 Jun", "xa": 2.34, "xb": 0.78, "ga": 2, "gb": 0, "pa": 71, "pe": 17, "pb": 11, "host": "", "nota": "KLEMENT: 220 puntos FIFA de ventaja belga; la generación post-dorada sigue siendo top-10. MISTERCHIP: sin precedentes mundialistas directos. FORMA: Egipto depende casi por completo de Salah; si lo neutralizan, su ataque se apaga. Bélgica controla con su mediocampo y parte 71% favorita.", "klement": true, "jugado": true, "real_ga": 1, "real_gb": 1, "acierto": "fallo"}, {"a": "Arabia Saudí", "b": "Uruguay", "fa": 1418, "fb": 1660, "grupo": "H", "sede": "Hard Rock Stadium, Miami", "fecha": "Lun 15 Jun", "xa": 0.74, "xb": 2.47, "ga": 0, "gb": 2, "pa": 9, "pe": 16, "pb": 74, "host": "", "nota": "KLEMENT: 242 puntos a favor de Uruguay, una de las potencias sudamericanas que el modelo de clima templado favorece. MISTERCHIP: Arabia ya dio la campanada ante Argentina en 2022, aviso de que nada está garantizado. FORMA: la Celeste de Bielsa llega sólida; Arabia, en reconstrucción. 74% charrúa, pero el antecedente saudí obliga a respetar el factor sorpresa.", "klement": true, "jugado": true, "real_ga": 1, "real_gb": 1, "acierto": "fallo"}, {"a": "Irán", "b": "Nueva Zelanda", "fa": 1640, "fb": 1300, "grupo": "G", "sede": "SoFi Stadium, Los Ángeles", "fecha": "Lun 15 Jun", "xa": 3.16, "xb": 0.58, "ga": 3, "gb": 0, "pa": 83, "pe": 9, "pb": 4, "host": "", "nota": "KLEMENT: 340 puntos FIFA de diferencia; Irán es la mejor selección asiática por ranking en este grupo. MISTERCHIP: Nueva Zelanda casi nunca puntúa en Mundiales fuera de Oceanía. FORMA: los All Whites compiten con orden pero les falta gol. xG 3.16 vs 0.58: Irán parte como claro favorito (83%).", "klement": true, "jugado": true, "real_ga": 2, "real_gb": 2, "acierto": "fallo"}, {"a": "Francia", "b": "Senegal", "fa": 1862, "fb": 1630, "grupo": "I", "sede": "MetLife Stadium, Nueva Jersey", "fecha": "Mar 16 Jun", "xa": 2.41, "xb": 1.06, "ga": 2, "gb": 1, "pa": 67, "pe": 18, "pb": 15, "host": "", "nota": "KLEMENT: Francia es candidata permanente del modelo (ganó su pronóstico 2018); 232 puntos sobre Senegal. MISTERCHIP: duelo de pasado colonial y plantillas repletas de Ligue 1; sin H2H mundialista decisivo. FORMA: Mbappé lidera una Francia profundísima. Senegal, campeón africano, es el rival más serio del grupo pero parte por detrás: 73% galo.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Irak", "b": "Noruega", "fa": 1410, "fb": 1590, "grupo": "I", "sede": "Gillette Stadium, Boston", "fecha": "Mar 16 Jun", "xa": 1.16, "xb": 2.12, "ga": 1, "gb": 2, "pa": 20, "pe": 21, "pb": 59, "host": "", "nota": "KLEMENT: 180 puntos a favor de Noruega, que regresa a un Mundial tras 28 años con Haaland y Ødegaard. MISTERCHIP: primera vez de Irak en la cita desde 1986. FORMA: la pegada de Haaland es decisiva; Irak buscará cerrarse y especular. 66% noruego, con el empate (20%) como vía de sorpresa iraquí.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Argentina", "b": "Argelia", "fa": 1870, "fb": 1530, "grupo": "J", "sede": "Arrowhead Stadium, Kansas City", "fecha": "Mar 16 Jun", "xa": 2.78, "xb": 0.88, "ga": 2, "gb": 0, "pa": 76, "pe": 14, "pb": 9, "host": "", "nota": "KLEMENT: la campeona defensora arranca con 340 puntos de ventaja; el modelo la mantiene entre las candidatas pese a no ser su campeona prevista. MISTERCHIP: Argentina no perdió un debut mundialista desde 1990 salvo el shock ante Arabia 2022. FORMA: Messi y Scaloni con el bloque intacto del título. 83% albiceleste: arranque cómodo esperado.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Austria", "b": "Jordania", "fa": 1560, "fb": 1390, "grupo": "J", "sede": "Levi's Stadium, San Francisco", "fecha": "Mar 16 Jun", "xa": 2.06, "xb": 1.18, "ga": 2, "gb": 1, "pa": 58, "pe": 21, "pb": 21, "host": "", "nota": "KLEMENT: 170 puntos a favor de Austria, que clasificó por delante de Bosnia en su grupo europeo. MISTERCHIP: debut mundialista histórico de Jordania, la cenicienta del grupo. FORMA: Austria, con bloque de Bundesliga, es ordenada y eficaz. 64% austriaco; Jordania apostará al orden para incomodar.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Portugal", "b": "RD Congo", "fa": 1778, "fb": 1470, "grupo": "K", "sede": "NRG Stadium, Houston", "fecha": "Mié 17 Jun", "xa": 2.57, "xb": 0.93, "ga": 2, "gb": 0, "pa": 72, "pe": 16, "pb": 11, "host": "", "nota": "KLEMENT: clave para el usuario. El modelo predice a PORTUGAL 1º del Grupo K y finalista del Mundial. 308 puntos sobre RD Congo. MISTERCHIP: sin historial mundialista directo. FORMA: Portugal, con Cristiano y una generación profundísima, golea; RD Congo es físico pero irregular. 81% luso: Portugal debe ganar para encarrilar el primer puesto del grupo de Colombia.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Inglaterra", "b": "Croacia", "fa": 1810, "fb": 1700, "grupo": "L", "sede": "AT&T Stadium, Dallas", "fecha": "Mié 17 Jun", "xa": 1.78, "xb": 1.03, "ga": 1, "gb": 1, "pa": 51, "pe": 29, "pb": 20, "host": "", "nota": "KLEMENT: Inglaterra es semifinalista en su pronóstico (cae con Portugal); 110 puntos sobre Croacia. MISTERCHIP: revancha de la semifinal de 2018 que ganó Croacia 2-1, y de la fase de grupos 2022 (sin enfrentarse). FORMA: Inglaterra con Bellingham y Kane; Croacia envejece pero Modric sigue mandando el tempo. Partido cerrado: 55-23-22, ligero favoritismo inglés.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Ghana", "b": "Panamá", "fa": 1450, "fb": 1440, "grupo": "L", "sede": "BMO Field, Toronto", "fecha": "Mié 17 Jun", "xa": 1.38, "xb": 1.32, "ga": 1, "gb": 1, "pa": 36, "pe": 32, "pb": 33, "host": "", "nota": "KLEMENT: el duelo más parejo del bloque, 10 puntos FIFA de diferencia. MISTERCHIP: cruce inédito en Mundiales. FORMA: Ghana tiene más nombre y físico; Panamá creció enormemente en Concacaf. Ambas pelean por arañar puntos en un grupo con Inglaterra y Croacia. Empate (26%) muy probable; ligera ventaja para Ghana por jerarquía.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Uzbekistán", "b": "Colombia", "fa": 1440, "fb": 1700, "grupo": "K", "sede": "Estadio Azteca, Ciudad de México", "fecha": "Mié 17 Jun", "xa": 1.0, "xb": 2.59, "ga": 1, "gb": 2, "pa": 12, "pe": 16, "pb": 71, "host": "", "nota": "KLEMENT: clave para el usuario. El modelo predice a COLOMBIA 2ª del Grupo K (clasifica). 260 puntos sobre Uzbekistán, debutante absoluto. Cuidado: se juega en el Azteca a 2.240 m de altitud, factor que iguala algo el desgaste físico. MISTERCHIP: primer Mundial de Uzbekistán. FORMA: la Colombia de James y la generación de Núñez/Díaz llega en gran momento. 76% cafetero: Colombia debe ganar para encaminar su clasificación.", "klement": true, "jugado": false, "ajustado": true}, {"a": "Países Bajos", "b": "Suecia", "fa": 1754, "fb": 1500, "grupo": "F", "sede": "NRG Stadium, Houston", "fecha": "Jue 18 Jun", "xa": 2.24, "xb": 1.02, "ga": 2, "gb": 1, "pa": 65, "pe": 19, "pb": 16, "host": "", "nota": "KLEMENT: segundo partido de su campeón pronosticado; 254 puntos sobre Suecia. MISTERCHIP: histórico equilibrado entre ambas en Europa, pero Países Bajos manda en citas grandes. FORMA: la Oranje gestiona el grupo con comodidad camino a la ronda de 32. 75% neerlandés: paso firme del favorito al título según Klement.", "klement": true, "jugado": false, "ajustado": true}];
 
 const list = document.getElementById('list');
+const accLabels={exacto:'Modelo: marcador exacto ✓',signo:'Modelo: acertó signo ✓',fallo:'Modelo: falló ✗'};
 DATA.forEach((m,i)=>{
   const hostA = m.host==='a' ? '<span class="host-tag">ANFITRIÓN</span>' : '';
   const hostB = m.host==='b' ? '<span class="host-tag">ANFITRIÓN</span>' : '';
   const el = document.createElement('div');
-  el.className='match';
+  el.className='match'+(m.jugado?' played':'');
+
+  // etiqueta superior derecha según estado
+  let stateTag='';
+  if(m.jugado) stateTag='<span class="played-tag">JUGADO</span>';
+  else if(m.ajustado) stateTag='<span class="adjust-tag">AJUSTE POR EVOLUCIÓN</span>';
+
+  // bloque de resultado real (solo partidos jugados)
+  let realBlock='';
+  if(m.jugado){
+    realBlock=`
+      <div class="realbox">
+        <span class="lbl">Resultado real</span>
+        <span class="rscore"><span class="rs">${m.real_ga}</span> — <span class="rs">${m.real_gb}</span></span>
+        <span class="acc ${m.acierto}">${accLabels[m.acierto]}</span>
+        <span class="model-mini">· El modelo predijo <b>${m.ga}–${m.gb}</b></span>
+      </div>`;
+  }
+
   el.innerHTML = `
     <div class="m-top">
       <span><span class="m-no">PARTIDO ${String(i+1).padStart(2,'0')}</span> · ${m.fecha}</span>
       <span>${m.sede}</span>
-      <span class="m-grp">GRUPO ${m.grupo}</span>
+      <span style="display:flex;gap:6px;align-items:center">${stateTag}${m.klement?'<span class="klement-tag">KLEMENT + MISTERCHIP</span>':''}<span class="m-grp">GRUPO ${m.grupo}</span></span>
     </div>
     <div class="m-body">
       <div class="teams">
@@ -250,13 +368,14 @@ DATA.forEach((m,i)=>{
           <span class="fifa">FIFA ${m.fa} pts</span>
           ${hostA}
         </div>
-        <div class="score"><span class="s">${m.ga}</span><em>—</em><span class="s">${m.gb}</span></div>
+        <div class="score" title="Pronóstico del modelo"><span class="s">${m.ga}</span><em>—</em><span class="s">${m.gb}</span></div>
         <div class="team right">
           <span class="name">${m.b}</span>
           <span class="fifa">FIFA ${m.fb} pts</span>
           ${hostB}
         </div>
       </div>
+      ${realBlock}
       <div class="pbar">
         <div class="pa" style="flex:${m.pa}">${m.pa}%</div>
         <div class="pe" style="flex:${m.pe}">${m.pe>8?m.pe+'%':''}</div>
@@ -265,25 +384,153 @@ DATA.forEach((m,i)=>{
       <div class="pleg">
         <span class="da">◤ Gana ${m.a}</span><span>Empate</span><span class="db">Gana ${m.b} ◥</span>
       </div>
-      <div class="xg">Goles esperados (xG): <b>${m.a} ${m.xa}</b> &nbsp;·&nbsp; <b>${m.b} ${m.xb}</b></div>
-      <p class="note"><span class="why">Justificación analítica</span>${m.nota}</p>
+      <div class="xg">Goles esperados (xG): <b>${m.a} ${m.xa}</b> &nbsp;·&nbsp; <b>${m.b} ${m.xb}</b>${m.ajustado?' &nbsp;<span style="color:var(--red)">· recalculado con datos del torneo</span>':''}</div>
+      <p class="note"><span class="why">${m.klement?'Análisis · 4 capas (Klement · MisterChip · Forma · Contexto)':'Justificación analítica'}</span>${m.nota}</p>
     </div>`;
   list.appendChild(el);
 });
 
-const favWins = DATA.filter(m=>Math.abs(m.pa-m.pb)>10).length;
-const closest = DATA.reduce((a,b)=>Math.abs(a.pa-a.pb)<Math.abs(b.pa-b.pb)?a:b);
-const biggest = DATA.reduce((a,b)=>Math.max(a.pa,a.pb)>Math.max(b.pa,b.pb)?a:b);
-const totalGoals = DATA.reduce((s,m)=>s+m.ga+m.gb,0);
+const jugados=DATA.filter(m=>m.jugado);
+const aciertos=jugados.filter(m=>m.acierto==='exacto'||m.acierto==='signo').length;
+const exactos=jugados.filter(m=>m.acierto==='exacto').length;
+const empatesReales=jugados.filter(m=>m.real_ga===m.real_gb).length;
+const golesReales=jugados.reduce((s,m)=>s+m.real_ga+m.real_gb,0);
 const v=[
-  {big:favWins, lbl:'Favoritos que ganan'},
-  {big:totalGoals, lbl:'Goles proyectados (10 PJ)'},
-  {big:Math.max(biggest.pa,biggest.pb)+'%', lbl:`Más probable: ${biggest.a}`},
-  {big:'±'+Math.abs(closest.pa-closest.pb)+'%', lbl:`Más parejo: ${closest.a} v ${closest.b}`}
+  {big:`${aciertos}/${jugados.length}`, lbl:'Aciertos del modelo (signo)'},
+  {big:exactos, lbl:'Marcadores exactos'},
+  {big:`${Math.round(empatesReales/jugados.length*100)}%`, lbl:`Empates reales (${empatesReales} de ${jugados.length})`},
+  {big:golesReales, lbl:`Goles reales en ${jugados.length} PJ`}
 ];
 const vg=document.getElementById('verdict');
 v.forEach(c=>{const d=document.createElement('div');d.className='vc';
   d.innerHTML=`<span class="top"></span><div class="big">${c.big}</div><div class="lbl">${c.lbl}</div>`;vg.appendChild(d);});
+
+/* ===================== QUINIELA / SEGUIMIENTO ===================== */
+const QKEY='quiniela_mundial2026';
+let picks=[];
+// almacenamiento persistente con fallback a memoria
+function qLoad(){
+  try{const r=localStorage.getItem(QKEY);picks=r?JSON.parse(r):[];}
+  catch(e){picks=picks||[];}
+}
+function qSave(){
+  try{localStorage.setItem(QKEY,JSON.stringify(picks));}catch(e){/* memoria */}
+}
+
+// llenar selector de partidos
+const sel=document.getElementById('q-match');
+DATA.forEach((m,i)=>{
+  const o=document.createElement('option');
+  o.value=i;o.textContent=`P${String(i+1).padStart(2,'0')} · ${m.a} vs ${m.b}`;
+  sel.appendChild(o);
+});
+
+// resultado del signo (1=local, X=empate, 2=visita)
+function sign(ga,gb){return ga>gb?'1':ga<gb?'2':'X';}
+
+function qRender(){
+  const body=document.getElementById('q-body');
+  body.innerHTML='';
+  if(!picks.length){
+    body.innerHTML='<tr><td colspan="7" class="q-empty">Aún no hay pronósticos registrados. Añade el primero arriba o pulsa «Cargar ejemplo».</td></tr>';
+    document.getElementById('q-leader').innerHTML='';
+    return;
+  }
+  picks.forEach((p,idx)=>{
+    const m=DATA[p.mi];
+    const jugado=m.jugado;
+    const tg = jugado ? {ga:m.real_ga, gb:m.real_gb} : {ga:m.ga, gb:m.gb};
+    const tgSign=sign(tg.ga,tg.gb), pickSign=sign(p.ga,p.gb);
+    const exact = (p.ga===tg.ga && p.gb===tg.gb);
+    const sameSign = (tgSign===pickSign);
+    let badge='';
+    if(jugado){
+      if(exact) badge='<span class="q-badge ok">acertó (exacto)</span>';
+      else if(sameSign) badge='<span class="q-badge par">acertó signo</span>';
+      else badge='<span class="q-badge miss">falló</span>';
+    } else {
+      if(exact) badge='<span class="q-badge ok">coincide con modelo</span>';
+      else if(sameSign) badge='<span class="q-badge par">mismo signo</span>';
+      else badge='<span class="q-miss" style="font-family:Spline Sans Mono,monospace;font-size:.72rem">—</span>';
+    }
+    const realCell = jugado
+      ? `<span style="color:var(--white);font-family:Spline Sans Mono,monospace">${m.real_ga}–${m.real_gb}</span>`
+      : '<span class="q-miss" style="font-family:Spline Sans Mono,monospace;font-size:.72rem">pendiente</span>';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td class="match-cell">${m.a} vs ${m.b}<br><span style="font-weight:400;color:var(--mute2);font-size:.72rem">P${String(p.mi+1).padStart(2,'0')} · ${m.grupo}${jugado?' · jugado':''}</span></td>
+      <td class="model-cell">${m.ga}–${m.gb}</td>
+      <td>${realCell}</td>
+      <td>${p.name}</td>
+      <td class="pick-cell ${sameSign?'q-hit':'q-miss'}">${p.ga}–${p.gb}</td>
+      <td>${badge}</td>
+      <td><button class="q-del" data-i="${idx}">✕</button></td>`;
+    body.appendChild(tr);
+  });
+  body.querySelectorAll('.q-del').forEach(b=>{
+    b.onclick=()=>{picks.splice(+b.dataset.i,1);qSave();qRender();};
+  });
+  qLeaderboard();
+}
+
+function qLeaderboard(){
+  const tally={};
+  picks.forEach(p=>{
+    const m=DATA[p.mi];
+    if(!tally[p.name])tally[p.name]={exact:0,sign:0,total:0,jugados:0};
+    tally[p.name].total++;
+    if(!m.jugado) return; // solo cuentan partidos con resultado real
+    tally[p.name].jugados++;
+    if(p.ga===m.real_ga && p.gb===m.real_gb)tally[p.name].exact++;
+    else if(sign(m.real_ga,m.real_gb)===sign(p.ga,p.gb))tally[p.name].sign++;
+  });
+  const rows=Object.entries(tally).map(([nm,t])=>({
+    nm,pts:t.exact*3+t.sign,exact:t.exact,sign:t.sign,total:t.total,jugados:t.jugados
+  })).sort((a,b)=>b.pts-a.pts);
+  const wrap=document.getElementById('q-leader');
+  wrap.innerHTML='';
+  if(!rows.length)return;
+  rows.forEach((r,i)=>{
+    const d=document.createElement('div');d.className='q-lc';
+    const medal = i===0?'🥇 ':i===1?'🥈 ':i===2?'🥉 ':'';
+    d.innerHTML=`<div class="nm">${medal}${r.nm}</div>
+      <div class="sc"><b>${r.pts} pts</b> · ${r.exact} exactos · ${r.sign} signos · ${r.jugados}/${r.total} ya jugados</div>`;
+    wrap.appendChild(d);
+  });
+}
+
+document.getElementById('q-add').onclick=()=>{
+  const name=document.getElementById('q-name').value.trim();
+  const mi=+sel.value;
+  const ga=parseInt(document.getElementById('q-ga').value,10);
+  const gb=parseInt(document.getElementById('q-gb').value,10);
+  if(!name){alert('Escribe el nombre del participante.');return;}
+  if(isNaN(ga)||isNaN(gb)){alert('Ingresa el marcador pronosticado (ambos goles).');return;}
+  picks.push({name,mi,ga,gb});
+  qSave();qRender();
+  document.getElementById('q-ga').value='';
+  document.getElementById('q-gb').value='';
+};
+
+document.getElementById('q-demo').onclick=()=>{
+  // ejemplo ilustrativo de varios participantes
+  const demo=[
+    {name:'Andrés',mi:0,ga:3,gb:0},   // México 2-0 Sudáfrica → acierta signo
+    {name:'Andrés',mi:5,ga:2,gb:1},   // Brasil 1-1 Marruecos → falla
+    {name:'Andrés',mi:23,ga:1,gb:2},  // Uzbekistán 0-2 Colombia → acierta signo
+    {name:'Lucía',mi:0,ga:2,gb:0},    // México 2-0 Sudáfrica → exacto
+    {name:'Lucía',mi:23,ga:0,gb:2},   // Uzbekistán 0-2 Colombia → exacto
+    {name:'Lucía',mi:9,ga:4,gb:0},    // Alemania 3-0 Curazao → acierta signo
+    {name:'Sofía',mi:9,ga:3,gb:0},    // Alemania 3-0 Curazao → exacto
+    {name:'Sofía',mi:13,ga:1,gb:1},   // Bélgica 2-0 Egipto → falla
+  ];
+  // evitar duplicar si ya cargó ejemplo
+  picks=picks.concat(demo);
+  qSave();qRender();
+};
+
+qLoad();
+qRender();
 </script>
 </body>
 </html>
