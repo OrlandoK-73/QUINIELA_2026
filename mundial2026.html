@@ -193,17 +193,156 @@
   .q-lc .sc{font-family:'Spline Sans Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:4px}
   .q-lc .sc b{color:var(--green-lt)}
 
+  /* quiniela agrupada por partido */
+  .q-group{border:1px solid var(--line);border-radius:5px;background:var(--panel);margin-bottom:16px;overflow:hidden}
+  .q-ghead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 18px;background:var(--ink2);border-bottom:1px solid var(--line)}
+  .q-gmatch{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.01em;text-transform:uppercase}
+  .q-gmeta{font-family:'Spline Sans Mono',monospace;font-size:.66rem;color:var(--mute2);letter-spacing:.05em;margin-top:3px}
+  .q-gscores{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .q-gs{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1}
+  .q-gs .lab{font-family:'Spline Sans Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute2)}
+  .q-gs .val{font-family:'Anton',sans-serif;font-size:1.4rem}
+  .q-gs.model .val{color:var(--green-lt)}
+  .q-gs.real .val{color:var(--white)}
+  .q-gs.pend .val{font-size:.8rem;color:var(--mute2);font-family:'Spline Sans Mono',monospace;padding-top:8px}
+  .q-players{padding:6px 18px 12px}
+  .q-prow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+  .q-prow:last-child{border-bottom:none}
+  .q-pname{font-family:'Archivo',sans-serif;font-size:.95rem;font-weight:600;display:flex;align-items:center;gap:8px}
+  .q-pscore{display:flex;align-items:center;gap:10px}
+  .q-pscore .ps{font-family:'Spline Sans Mono',monospace;font-size:.95rem;font-weight:600}
+  .q-pscore .ps.hit{color:var(--green-lt)} .q-pscore .ps.miss{color:var(--muted)}
+  .q-del2{background:none;border:1px solid var(--line);color:var(--mute2);cursor:pointer;border-radius:3px;padding:2px 7px;font-size:.68rem;font-family:'Spline Sans Mono',monospace}
+  .q-del2:hover{border-color:var(--red);color:var(--red)}
+
+  /* tarjetas de quiniela agrupadas por partido */
+  .qg-card{border:1px solid var(--line);border-radius:5px;background:var(--card);margin-bottom:16px;overflow:hidden}
+  .qg-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;background:var(--ink2);border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .qg-match{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.01em;text-transform:uppercase;line-height:1}
+  .qg-meta{font-family:'Spline Sans Mono',monospace;font-size:.66rem;color:var(--mute2);letter-spacing:.05em;margin-top:5px}
+  .qg-scores{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .qg-pill{font-family:'Spline Sans Mono',monospace;font-size:.7rem;padding:5px 10px;border-radius:3px;border:1px solid var(--line);white-space:nowrap}
+  .qg-pill .t{color:var(--mute2);letter-spacing:.06em;text-transform:uppercase;font-size:.6rem;margin-right:6px}
+  .qg-pill.model{border-color:var(--green-d)} .qg-pill.model .v{color:var(--green-lt);font-weight:600}
+  .qg-pill.real{border-color:var(--line);background:var(--ink)} .qg-pill.real .v{color:var(--white);font-weight:600}
+  .qg-pill.pend .v{color:var(--mute2)}
+  .qg-players{padding:6px 0}
+  .qg-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:10px 18px;border-bottom:1px solid var(--line)}
+  .qg-row:last-child{border-bottom:none}
+  .qg-row .pname{font-family:'Archivo',sans-serif;font-size:.95rem;color:var(--white);font-weight:500}
+  .qg-row .pscore{font-family:'Spline Sans Mono',monospace;font-size:.92rem;letter-spacing:.04em}
+  .qg-row .pscore.hit{color:var(--green-lt)} .qg-row .pscore.miss{color:var(--muted)}
+  .qg-row .pright{display:flex;align-items:center;gap:10px}
+  .qg-empty-row{padding:12px 18px;font-family:'Spline Sans Mono',monospace;font-size:.74rem;color:var(--mute2)}
+  .qg-del{background:none;border:1px solid var(--line);color:var(--mute2);cursor:pointer;border-radius:3px;padding:3px 8px;font-size:.7rem;font-family:'Spline Sans Mono',monospace}
+  .qg-del:hover{border-color:var(--red);color:var(--red)}
+  .qg-filter{display:flex;gap:6px;margin:4px 0 18px;flex-wrap:wrap}
+  .qg-fbtn{background:none;border:1px solid var(--line);color:var(--muted);font-family:'Spline Sans Mono',monospace;font-size:.72rem;padding:6px 12px;border-radius:20px;cursor:pointer;transition:all .18s}
+  .qg-fbtn:hover{border-color:var(--green);color:var(--white)}
+  .qg-fbtn.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+  /* ---- Quiniela agrupada por partido ---- */
+  #q-groups{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+  .qg{border:1px solid var(--line);border-radius:5px;background:var(--panel);overflow:hidden}
+  .qg-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;background:var(--ink2);border-bottom:1px solid var(--line)}
+  .qg-match{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.01em;text-transform:uppercase}
+  .qg-tag{font-family:'Spline Sans Mono',monospace;font-size:.62rem;letter-spacing:.06em;color:var(--mute2)}
+  .qg-model{margin-left:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .qg-model .lbl{font-family:'Spline Sans Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .qg-model .mscore{font-family:'Anton',sans-serif;font-size:1.2rem;color:var(--green-lt)}
+  .qg-model .rscore{font-family:'Anton',sans-serif;font-size:1.2rem;color:var(--white)}
+  .qg-rows{display:flex;flex-direction:column}
+  .qg-row{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--line)}
+  .qg-row:last-child{border-bottom:none}
+  .qg-row .pname{font-weight:600;color:#e6e8e5}
+  .qg-row .ppick{font-family:'Spline Sans Mono',monospace;font-size:.95rem}
+  .qg-row .ppick.hit{color:var(--green-lt)} .qg-row .ppick.miss{color:var(--muted)}
+  .qg-empty-row{padding:14px 18px;color:var(--mute2);font-family:'Spline Sans Mono',monospace;font-size:.78rem}
+  .qg-del{background:none;border:1px solid var(--line);color:var(--mute2);cursor:pointer;border-radius:3px;padding:3px 8px;font-size:.7rem;font-family:'Spline Sans Mono',monospace}
+  .qg-del:hover{border-color:var(--red);color:var(--red)}
+
+  /* ---------- MENÚ DESPLEGABLE (HEADER) ---------- */
+  .navbar{position:sticky;top:0;z-index:50;background:rgba(20,20,22,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .navbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
+  .nav-brand{font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--white)}
+  .nav-brand b{color:var(--green)}
+  .menu{position:relative}
+  .menu-btn{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);color:var(--white);font-family:'Spline Sans Mono',monospace;font-size:.78rem;letter-spacing:.03em;padding:9px 15px;border-radius:3px;cursor:pointer;transition:border-color .2s}
+  .menu-btn:hover{border-color:var(--green)}
+  .menu-btn .car{transition:transform .25s;font-size:.7rem;color:var(--green-lt)}
+  .menu.open .menu-btn .car{transform:rotate(180deg)}
+  .menu-list{position:absolute;right:0;top:calc(100% + 8px);min-width:250px;background:var(--panel);border:1px solid var(--line);border-radius:5px;overflow:hidden;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .22s;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+  .menu.open .menu-list{opacity:1;visibility:visible;transform:translateY(0)}
+  .menu-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--line);color:var(--white);font-family:'Archivo',sans-serif;font-size:.92rem;padding:14px 16px;cursor:pointer;transition:background .18s}
+  .menu-item:last-child{border-bottom:none}
+  .menu-item:hover{background:var(--ink2)}
+  .menu-item .ic{width:30px;height:30px;border-radius:4px;display:grid;place-items:center;flex-shrink:0;font-size:.95rem}
+  .menu-item .ic.q{background:rgba(60,172,59,.18);color:var(--green-lt)}
+  .menu-item .ic.r{background:rgba(230,29,37,.18);color:#ff7a64}
+  .menu-item .mt{display:flex;flex-direction:column;gap:2px}
+  .menu-item .mt b{font-weight:600}
+  .menu-item .mt span{font-size:.72rem;color:var(--muted);font-family:'Spline Sans Mono',monospace}
+
+  /* ---------- PAGINACIÓN ---------- */
+  .pager{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 22px;font-family:'Spline Sans Mono',monospace}
+  .pager .pginfo{color:var(--muted);font-size:.76rem;margin-right:auto}
+  .pager .pginfo b{color:var(--green-lt)}
+  .pg-btn{background:var(--panel);border:1px solid var(--line);color:var(--white);font-family:'Spline Sans Mono',monospace;font-size:.78rem;min-width:38px;padding:8px 12px;border-radius:3px;cursor:pointer;transition:all .18s}
+  .pg-btn:hover:not(:disabled){border-color:var(--green);color:var(--green-lt)}
+  .pg-btn.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:600}
+  .pg-btn:disabled{opacity:.35;cursor:not-allowed}
+  .pg-filter{display:flex;gap:6px;margin:0 0 18px;flex-wrap:wrap}
+  .pg-fbtn{background:none;border:1px solid var(--line);color:var(--muted);font-family:'Spline Sans Mono',monospace;font-size:.72rem;padding:6px 12px;border-radius:20px;cursor:pointer;transition:all .18s}
+  .pg-fbtn:hover{border-color:var(--green);color:var(--white)}
+  .pg-fbtn.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+  /* ---------- PANEL INGRESO DE RESULTADO ---------- */
+  .result-panel{padding:46px 0;border-top:1px solid var(--line);background:var(--ink2);display:none}
+  .result-panel.show{display:block}
+  .rp-controls{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0;align-items:center}
+  .rp-controls select,.rp-controls input{background:var(--panel);border:1px solid var(--line);color:var(--white);font-family:'Spline Sans Mono',monospace;font-size:.8rem;padding:9px 11px;border-radius:3px}
+  .rp-controls input{width:74px;text-align:center}
+  .rp-controls .vs{color:var(--mute2);font-family:'Spline Sans Mono',monospace}
+  .rp-btn{background:var(--red);color:#fff;border:none;font-family:'Spline Sans Mono',monospace;font-size:.78rem;font-weight:600;padding:9px 16px;border-radius:3px;cursor:pointer;letter-spacing:.04em;transition:background .2s}
+  .rp-btn:hover{background:#c4161d}
+  .rp-feedback{font-family:'Spline Sans Mono',monospace;font-size:.8rem;color:var(--green-lt);min-height:20px;margin-top:6px}
+  .quiniela{display:none}
+  .quiniela.show{display:block}
+
   @media(max-width:560px){
     .teams{grid-template-columns:1fr;text-align:center;gap:12px}
     .team.right{text-align:center}
     .team.right .host-tag{align-self:center}
     .score{justify-self:center}
     .badge26{display:none}
+    .navbar .wrap{flex-wrap:wrap;gap:10px}
+    .menu-list{min-width:220px}
   }
 </style>
 </head>
 <body>
 <div class="tricolor"><i class="g"></i><i class="b"></i><i class="r"></i></div>
+
+<nav class="navbar">
+  <div class="wrap">
+    <div class="nav-brand">FIFA <b>26</b> · Predicciones</div>
+    <div class="menu" id="menu">
+      <button class="menu-btn" id="menu-btn" aria-haspopup="true" aria-expanded="false">
+        Menú <span class="car">▼</span>
+      </button>
+      <div class="menu-list" role="menu">
+        <button class="menu-item" data-target="quiniela" role="menuitem">
+          <span class="ic q">📋</span>
+          <span class="mt"><b>Seguimiento de la quiniela</b><span>Pronósticos y tabla de participantes</span></span>
+        </button>
+        <button class="menu-item" data-target="result" role="menuitem">
+          <span class="ic r">✏️</span>
+          <span class="mt"><b>Ingreso de resultado</b><span>Registrar el marcador real de un partido</span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
 
 <header>
   <div class="wrap">
@@ -263,7 +402,13 @@ P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// ƒ_to
 <section class="matches">
   <div class="wrap">
     <div class="sec-label"><span>02</span> &nbsp;/&nbsp; Pronóstico partido a partido</div>
+    <div class="pg-filter" id="pg-filter">
+      <button class="pg-fbtn active" data-filter="all">Todos</button>
+      <button class="pg-fbtn" data-filter="jugado">Jugados</button>
+      <button class="pg-fbtn" data-filter="pendiente">Pendientes</button>
+    </div>
     <div id="list"></div>
+    <div class="pager" id="pager"></div>
   </div>
 </section>
 
@@ -275,10 +420,29 @@ P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// ƒ_to
   </div>
 </section>
 
+<section class="result-panel" id="result-panel">
+  <div class="wrap">
+    <div class="sec-label"><span>★</span> &nbsp;/&nbsp; Ingreso de resultado</div>
+    <p class="q-intro">Registra el <b style="color:#fff">marcador real</b> de un partido cuando se juegue. El sitio recalculará automáticamente si el modelo acertó y actualizará la tabla de la quiniela. Útil para ir alimentando los partidos que aún figuran como pendientes.</p>
+    <p class="q-note">Los resultados se guardan en este navegador. No se comparten ni salen de tu dispositivo.</p>
+
+    <div class="rp-controls">
+      <input type="text" id="rp-user" placeholder="Tu nombre" style="width:130px" maxlength="20">
+      <select id="rp-match"></select>
+      <input type="number" id="rp-ga" placeholder="0" min="0" max="20">
+      <span class="vs">—</span>
+      <input type="number" id="rp-gb" placeholder="0" min="0" max="20">
+      <button class="rp-btn" id="rp-save">Guardar resultado</button>
+      <button class="pg-fbtn" id="rp-clear" style="border-radius:3px">Restablecer todos</button>
+    </div>
+    <p class="rp-feedback" id="rp-feedback"></p>
+  </div>
+</section>
+
 <section class="quiniela">
   <div class="wrap">
     <div class="sec-label"><span>04</span> &nbsp;/&nbsp; Seguimiento de la quiniela</div>
-    <p class="q-intro">Espacio para registrar los pronósticos de los integrantes de la quiniela. <b style="color:#fff">Para los partidos ya jugados, los aciertos se miden contra el resultado real</b> (3 pts marcador exacto · 1 pt signo); los pendientes se comparan con el modelo a modo de referencia. La predicción oficial del sitio sigue siendo siempre la del modelo Klement + MisterChip.</p>
+    <p class="q-intro">Cada partido muestra el <b style="color:#fff">marcador del modelo</b> y, debajo, el pronóstico de cada participante de la quiniela. <b style="color:#fff">Para los partidos ya jugados, los aciertos se miden contra el resultado real</b> (3 pts marcador exacto · 1 pt signo); los pendientes se comparan con el modelo a modo de referencia.</p>
     <p class="q-note">Los datos se guardan en este navegador. No se comparten ni salen de tu dispositivo.</p>
 
     <div class="q-controls">
@@ -291,22 +455,7 @@ P(victoria) = Σ P(i, j)  ∀ i &gt; j&nbsp;&nbsp;&nbsp;<span class="c">// ƒ_to
       <button class="q-btn alt" id="q-demo">Cargar ejemplo</button>
     </div>
 
-    <div class="q-table-wrap">
-      <table class="q-table">
-        <thead>
-          <tr>
-            <th>Partido</th>
-            <th>Modelo</th>
-            <th>Resultado real</th>
-            <th>Participante</th>
-            <th>Su pronóstico</th>
-            <th>Resultado</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="q-body"></tbody>
-      </table>
-    </div>
+    <div id="q-groups"></div>
 
     <div class="q-leader" id="q-leader"></div>
   </div>
@@ -332,18 +481,15 @@ const DATA = [{"a": "México", "b": "Sudáfrica", "fa": 1681, "fb": 1450, "grupo
 
 const list = document.getElementById('list');
 const accLabels={exacto:'Modelo: marcador exacto ✓',signo:'Modelo: acertó signo ✓',fallo:'Modelo: falló ✗'};
-DATA.forEach((m,i)=>{
+
+function matchHTML(m,i){
   const hostA = m.host==='a' ? '<span class="host-tag">ANFITRIÓN</span>' : '';
   const hostB = m.host==='b' ? '<span class="host-tag">ANFITRIÓN</span>' : '';
-  const el = document.createElement('div');
-  el.className='match'+(m.jugado?' played':'');
 
-  // etiqueta superior derecha según estado
   let stateTag='';
   if(m.jugado) stateTag='<span class="played-tag">JUGADO</span>';
   else if(m.ajustado) stateTag='<span class="adjust-tag">AJUSTE POR EVOLUCIÓN</span>';
 
-  // bloque de resultado real (solo partidos jugados)
   let realBlock='';
   if(m.jugado){
     realBlock=`
@@ -352,10 +498,11 @@ DATA.forEach((m,i)=>{
         <span class="rscore"><span class="rs">${m.real_ga}</span> — <span class="rs">${m.real_gb}</span></span>
         <span class="acc ${m.acierto}">${accLabels[m.acierto]}</span>
         <span class="model-mini">· El modelo predijo <b>${m.ga}–${m.gb}</b></span>
+        ${m.registrado_por?`<span class="model-mini">· Registrado por <b>${m.registrado_por}</b></span>`:''}
       </div>`;
   }
 
-  el.innerHTML = `
+  return `
     <div class="m-top">
       <span><span class="m-no">PARTIDO ${String(i+1).padStart(2,'0')}</span> · ${m.fecha}</span>
       <span>${m.sede}</span>
@@ -387,23 +534,91 @@ DATA.forEach((m,i)=>{
       <div class="xg">Goles esperados (xG): <b>${m.a} ${m.xa}</b> &nbsp;·&nbsp; <b>${m.b} ${m.xb}</b>${m.ajustado?' &nbsp;<span style="color:var(--red)">· recalculado con datos del torneo</span>':''}</div>
       <p class="note"><span class="why">${m.klement?'Análisis · 4 capas (Klement · MisterChip · Forma · Contexto)':'Justificación analítica'}</span>${m.nota}</p>
     </div>`;
-  list.appendChild(el);
+}
+
+/* ---- Paginación + filtros ---- */
+const PER_PAGE=5;
+let pgCurrent=1, pgFilter='all';
+
+function filteredIdx(){
+  return DATA.map((m,i)=>i).filter(i=>{
+    if(pgFilter==='jugado') return DATA[i].jugado;
+    if(pgFilter==='pendiente') return !DATA[i].jugado;
+    return true;
+  });
+}
+
+function renderList(){
+  const idxs=filteredIdx();
+  const totalPages=Math.max(1,Math.ceil(idxs.length/PER_PAGE));
+  if(pgCurrent>totalPages) pgCurrent=totalPages;
+  const start=(pgCurrent-1)*PER_PAGE;
+  const pageIdx=idxs.slice(start,start+PER_PAGE);
+
+  list.innerHTML='';
+  if(!pageIdx.length){
+    list.innerHTML='<div class="q-empty" style="border:1px solid var(--line);border-radius:4px">No hay partidos en esta vista.</div>';
+  }
+  pageIdx.forEach(i=>{
+    const el=document.createElement('div');
+    el.className='match'+(DATA[i].jugado?' played':'');
+    el.innerHTML=matchHTML(DATA[i],i);
+    list.appendChild(el);
+  });
+  renderPager(idxs.length,totalPages,start,pageIdx.length);
+}
+
+function renderPager(total,totalPages,start,shown){
+  const pager=document.getElementById('pager');
+  pager.innerHTML='';
+  const info=document.createElement('span');
+  info.className='pginfo';
+  info.innerHTML=total? `Mostrando <b>${start+1}–${start+shown}</b> de <b>${total}</b> partidos`:'';
+  pager.appendChild(info);
+
+  const mkBtn=(label,page,opts={})=>{
+    const b=document.createElement('button');
+    b.className='pg-btn'+(opts.active?' active':'');
+    b.textContent=label;
+    if(opts.disabled) b.disabled=true;
+    else b.onclick=()=>{pgCurrent=page; renderList(); document.querySelector('.matches').scrollIntoView({behavior:'smooth'});};
+    return b;
+  };
+  pager.appendChild(mkBtn('‹',pgCurrent-1,{disabled:pgCurrent<=1}));
+  for(let p=1;p<=totalPages;p++) pager.appendChild(mkBtn(p,p,{active:p===pgCurrent}));
+  pager.appendChild(mkBtn('›',pgCurrent+1,{disabled:pgCurrent>=totalPages}));
+}
+
+// filtros
+document.querySelectorAll('#pg-filter .pg-fbtn').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('#pg-filter .pg-fbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    pgFilter=btn.dataset.filter; pgCurrent=1; renderList();
+  };
 });
 
-const jugados=DATA.filter(m=>m.jugado);
-const aciertos=jugados.filter(m=>m.acierto==='exacto'||m.acierto==='signo').length;
-const exactos=jugados.filter(m=>m.acierto==='exacto').length;
-const empatesReales=jugados.filter(m=>m.real_ga===m.real_gb).length;
-const golesReales=jugados.reduce((s,m)=>s+m.real_ga+m.real_gb,0);
-const v=[
-  {big:`${aciertos}/${jugados.length}`, lbl:'Aciertos del modelo (signo)'},
-  {big:exactos, lbl:'Marcadores exactos'},
-  {big:`${Math.round(empatesReales/jugados.length*100)}%`, lbl:`Empates reales (${empatesReales} de ${jugados.length})`},
-  {big:golesReales, lbl:`Goles reales en ${jugados.length} PJ`}
-];
-const vg=document.getElementById('verdict');
-v.forEach(c=>{const d=document.createElement('div');d.className='vc';
-  d.innerHTML=`<span class="top"></span><div class="big">${c.big}</div><div class="lbl">${c.lbl}</div>`;vg.appendChild(d);});
+renderList();
+
+function renderVerdict(){
+  const jugados=DATA.filter(m=>m.jugado);
+  const aciertos=jugados.filter(m=>m.acierto==='exacto'||m.acierto==='signo').length;
+  const exactos=jugados.filter(m=>m.acierto==='exacto').length;
+  const empatesReales=jugados.filter(m=>m.real_ga===m.real_gb).length;
+  const golesReales=jugados.reduce((s,m)=>s+m.real_ga+m.real_gb,0);
+  const n=jugados.length||1;
+  const v=[
+    {big:`${aciertos}/${jugados.length}`, lbl:'Aciertos del modelo (signo)'},
+    {big:exactos, lbl:'Marcadores exactos'},
+    {big:`${Math.round(empatesReales/n*100)}%`, lbl:`Empates reales (${empatesReales} de ${jugados.length})`},
+    {big:golesReales, lbl:`Goles reales en ${jugados.length} PJ`}
+  ];
+  const vg=document.getElementById('verdict');
+  vg.innerHTML='';
+  v.forEach(c=>{const d=document.createElement('div');d.className='vc';
+    d.innerHTML=`<span class="top"></span><div class="big">${c.big}</div><div class="lbl">${c.lbl}</div>`;vg.appendChild(d);});
+}
+renderVerdict();
 
 /* ===================== QUINIELA / SEGUIMIENTO ===================== */
 const QKEY='quiniela_mundial2026';
@@ -429,45 +644,77 @@ DATA.forEach((m,i)=>{
 function sign(ga,gb){return ga>gb?'1':ga<gb?'2':'X';}
 
 function qRender(){
-  const body=document.getElementById('q-body');
-  body.innerHTML='';
+  const wrap=document.getElementById('q-groups');
+  wrap.innerHTML='';
   if(!picks.length){
-    body.innerHTML='<tr><td colspan="7" class="q-empty">Aún no hay pronósticos registrados. Añade el primero arriba o pulsa «Cargar ejemplo».</td></tr>';
+    wrap.innerHTML='<div class="q-empty" style="border:1px solid var(--line);border-radius:5px">Aún no hay pronósticos registrados. Añade el primero arriba o pulsa «Cargar ejemplo».</div>';
     document.getElementById('q-leader').innerHTML='';
     return;
   }
+  // agrupar los pronósticos por partido (mi)
+  const byMatch={};
   picks.forEach((p,idx)=>{
-    const m=DATA[p.mi];
+    (byMatch[p.mi]=byMatch[p.mi]||[]).push({...p,idx});
+  });
+  // ordenar partidos por su número
+  const orderedMi=Object.keys(byMatch).map(Number).sort((a,b)=>a-b);
+
+  orderedMi.forEach(mi=>{
+    const m=DATA[mi];
     const jugado=m.jugado;
     const tg = jugado ? {ga:m.real_ga, gb:m.real_gb} : {ga:m.ga, gb:m.gb};
-    const tgSign=sign(tg.ga,tg.gb), pickSign=sign(p.ga,p.gb);
-    const exact = (p.ga===tg.ga && p.gb===tg.gb);
-    const sameSign = (tgSign===pickSign);
-    let badge='';
+
+    // bloque de marcadores del encabezado: modelo + real/pendiente
+    let scoresHTML=`
+      <div class="q-gs model"><span class="lab">Modelo</span><span class="val">${m.ga}–${m.gb}</span></div>`;
     if(jugado){
-      if(exact) badge='<span class="q-badge ok">acertó (exacto)</span>';
-      else if(sameSign) badge='<span class="q-badge par">acertó signo</span>';
-      else badge='<span class="q-badge miss">falló</span>';
+      scoresHTML+=`<div class="q-gs real"><span class="lab">Resultado real</span><span class="val">${m.real_ga}–${m.real_gb}</span></div>`;
     } else {
-      if(exact) badge='<span class="q-badge ok">coincide con modelo</span>';
-      else if(sameSign) badge='<span class="q-badge par">mismo signo</span>';
-      else badge='<span class="q-miss" style="font-family:Spline Sans Mono,monospace;font-size:.72rem">—</span>';
+      scoresHTML+=`<div class="q-gs pend"><span class="lab">Resultado</span><span class="val">pendiente</span></div>`;
     }
-    const realCell = jugado
-      ? `<span style="color:var(--white);font-family:Spline Sans Mono,monospace">${m.real_ga}–${m.real_gb}</span>`
-      : '<span class="q-miss" style="font-family:Spline Sans Mono,monospace;font-size:.72rem">pendiente</span>';
-    const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td class="match-cell">${m.a} vs ${m.b}<br><span style="font-weight:400;color:var(--mute2);font-size:.72rem">P${String(p.mi+1).padStart(2,'0')} · ${m.grupo}${jugado?' · jugado':''}</span></td>
-      <td class="model-cell">${m.ga}–${m.gb}</td>
-      <td>${realCell}</td>
-      <td>${p.name}</td>
-      <td class="pick-cell ${sameSign?'q-hit':'q-miss'}">${p.ga}–${p.gb}</td>
-      <td>${badge}</td>
-      <td><button class="q-del" data-i="${idx}">✕</button></td>`;
-    body.appendChild(tr);
+
+    // filas de participantes
+    let playersHTML='';
+    byMatch[mi].forEach(p=>{
+      const tgSign=sign(tg.ga,tg.gb), pickSign=sign(p.ga,p.gb);
+      const exact=(p.ga===tg.ga && p.gb===tg.gb);
+      const sameSign=(tgSign===pickSign);
+      let badge='';
+      if(jugado){
+        if(exact) badge='<span class="q-badge ok">acertó · exacto</span>';
+        else if(sameSign) badge='<span class="q-badge par">acertó signo</span>';
+        else badge='<span class="q-badge miss">falló</span>';
+      } else {
+        if(exact) badge='<span class="q-badge ok">coincide con modelo</span>';
+        else if(sameSign) badge='<span class="q-badge par">mismo signo</span>';
+        else badge='';
+      }
+      playersHTML+=`
+        <div class="q-prow">
+          <span class="q-pname">${p.name} ${badge}</span>
+          <span class="q-pscore">
+            <span class="ps ${sameSign?'hit':'miss'}">${p.ga}–${p.gb}</span>
+            <button class="q-del2" data-i="${p.idx}" title="Eliminar">✕</button>
+          </span>
+        </div>`;
+    });
+
+    const g=document.createElement('div');
+    g.className='q-group';
+    g.innerHTML=`
+      <div class="q-ghead">
+        <div>
+          <div class="q-gmatch">${m.a} <span style="color:var(--mute2);font-size:.7em">vs</span> ${m.b}</div>
+          <div class="q-gmeta">P${String(mi+1).padStart(2,'0')} · Grupo ${m.grupo} · ${m.fecha}${jugado?' · JUGADO':''}</div>
+        </div>
+        <div class="q-gscores">${scoresHTML}</div>
+      </div>
+      <div class="q-players">${playersHTML}</div>`;
+    wrap.appendChild(g);
   });
-  body.querySelectorAll('.q-del').forEach(b=>{
+
+  // borrar individual
+  wrap.querySelectorAll('.q-del2').forEach(b=>{
     b.onclick=()=>{picks.splice(+b.dataset.i,1);qSave();qRender();};
   });
   qLeaderboard();
@@ -531,6 +778,109 @@ document.getElementById('q-demo').onclick=()=>{
 
 qLoad();
 qRender();
+
+/* ===================== MENÚ DESPLEGABLE ===================== */
+const menu=document.getElementById('menu');
+const menuBtn=document.getElementById('menu-btn');
+menuBtn.onclick=(e)=>{
+  e.stopPropagation();
+  const open=menu.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded',open);
+};
+document.addEventListener('click',()=>menu.classList.remove('open'));
+
+const quinielaSec=document.querySelector('.quiniela');
+const resultSec=document.getElementById('result-panel');
+document.querySelectorAll('.menu-item').forEach(it=>{
+  it.onclick=()=>{
+    const t=it.dataset.target;
+    if(t==='quiniela'){
+      quinielaSec.classList.add('show');
+      quinielaSec.scrollIntoView({behavior:'smooth'});
+    } else if(t==='result'){
+      resultSec.classList.add('show');
+      resultSec.scrollIntoView({behavior:'smooth'});
+    }
+    menu.classList.remove('open');
+  };
+});
+
+/* ===================== INGRESO DE RESULTADO ===================== */
+const RKEY='resultados_mundial2026';
+// cargar resultados ingresados por el usuario y aplicarlos a DATA
+function applyStoredResults(){
+  let stored={};
+  try{stored=JSON.parse(localStorage.getItem(RKEY)||'{}');}catch(e){stored={};}
+  Object.entries(stored).forEach(([mi,r])=>{
+    const m=DATA[+mi]; if(!m)return;
+    setRealResult(+mi,r.ga,r.gb,r.user,false);
+  });
+}
+function recomputeAcierto(m){
+  const ms=sign(m.ga,m.gb), rs=sign(m.real_ga,m.real_gb);
+  if(m.ga===m.real_ga && m.gb===m.real_gb) return 'exacto';
+  if(ms===rs) return 'signo';
+  return 'fallo';
+}
+function setRealResult(mi,ga,gb,user,persist=true){
+  const m=DATA[mi];
+  m.jugado=true; m.real_ga=ga; m.real_gb=gb;
+  if(user) m.registrado_por=user;
+  m.acierto=recomputeAcierto(m);
+  if(persist){
+    let stored={};
+    try{stored=JSON.parse(localStorage.getItem(RKEY)||'{}');}catch(e){}
+    stored[mi]={ga,gb,user:user||''};
+    try{localStorage.setItem(RKEY,JSON.stringify(stored));}catch(e){}
+  }
+}
+
+// llenar selector del panel de ingreso
+const rpSel=document.getElementById('rp-match');
+function fillRpSelect(){
+  rpSel.innerHTML='';
+  DATA.forEach((m,i)=>{
+    const o=document.createElement('option');
+    o.value=i;
+    o.textContent=`P${String(i+1).padStart(2,'0')} · ${m.a} vs ${m.b}${m.jugado?` (real ${m.real_ga}-${m.real_gb})`:''}`;
+    rpSel.appendChild(o);
+  });
+}
+
+// al elegir un partido ya jugado, precargar su marcador
+rpSel.addEventListener('change',()=>{
+  const m=DATA[+rpSel.value];
+  document.getElementById('rp-ga').value = m.jugado? m.real_ga : '';
+  document.getElementById('rp-gb').value = m.jugado? m.real_gb : '';
+});
+
+document.getElementById('rp-save').onclick=()=>{
+  const mi=+rpSel.value;
+  const user=document.getElementById('rp-user').value.trim();
+  const ga=parseInt(document.getElementById('rp-ga').value,10);
+  const gb=parseInt(document.getElementById('rp-gb').value,10);
+  const fb=document.getElementById('rp-feedback');
+  if(!user){fb.style.color='#ff7a64';fb.textContent='Escribe tu nombre antes de guardar el resultado.';return;}
+  if(isNaN(ga)||isNaN(gb)){fb.style.color='#ff7a64';fb.textContent='Ingresa ambos goles del marcador real.';return;}
+  setRealResult(mi,ga,gb,user,true);
+  const m=DATA[mi];
+  const txt={exacto:'el modelo acertó el marcador exacto ✓',signo:'el modelo acertó el signo ✓',fallo:'el modelo falló ✗'}[m.acierto];
+  fb.style.color='var(--green-lt)';
+  fb.textContent=`Guardado por ${user}: ${m.a} ${ga}–${gb} ${m.b}. Resultado — ${txt}.`;
+  // refrescar todo lo que depende de resultados
+  renderList(); renderVerdict(); fillRpSelect(); rpSel.value=mi;
+  if(typeof qRender==='function') qRender();
+};
+
+document.getElementById('rp-clear').onclick=()=>{
+  if(!confirm('¿Restablecer todos los resultados que ingresaste manualmente? Los 16 partidos originales del torneo se conservan.')) return;
+  try{localStorage.removeItem(RKEY);}catch(e){}
+  location.reload();
+};
+
+applyStoredResults();
+fillRpSelect();
+renderList(); renderVerdict();
 </script>
 </body>
 </html>
